@@ -8,12 +8,15 @@
 
 # Exit Codes:
 #    0 - exited normally
-#   10 - bad command line input
+#    1 - bad command line input
 
 import sys
-import time
-import json
-import subprocess
+from typing import List
+
+import time         # for epoch time
+import json         # for packaging result
+import subprocess   # for making cmd scans
+import http.client  # for http connections
 
 
 '''
@@ -25,7 +28,14 @@ dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9'
                  '64.6.65.6', '91.239.100.100', '185.228.168.168', 
                  '77.88.8.7', '156.154.70.1', '198.101.242.72', '176.103.130.130']
                  
-def get_ip_addresses(website, ip_type):
+
+def get_ip_addresses(website: str, ip_type: str) -> List[str]:
+# Return list of IP address from dns_resolvers of particular ip_type
+    # Arguments:
+    #   website (string) : website to make DNS requests for
+    #   ip_type (string) : type of IP address to query for ('ipv4' or 'ipv6')
+    # Return:
+    #   ip_addresses (listof string) : list of all unique IP addresses for particular website
     ip_addresses = []
 
     if (ip_type == 'ipv4'):
@@ -61,14 +71,28 @@ def get_ip_addresses(website, ip_type):
     return ip_addresses
 
 
+def get_http_data(website: str) -> str:
+# Returns parsed HTTP contents
+    # Arguments:
+    #   website (string) : website to make HTTP request for
+    # Returns:
+    #
 
+    connect = http.client.HTTPConnection(website)
+    head = {'Host': website}
+    connect.request('GET', '/', head)
+    response = connect.getresponse()
+
+    server = response.getheader('Server')
+
+    return server
 
 
 
 # Check for command line argument
 if len(sys.argv) != 3:
     sys.stderr.write("scan.py requires 2 arguments: input_file.txt and output_file.json \n")
-    sys.exit(10)
+    sys.exit(1)
 
 # Load in websites from input file
 websites = []
@@ -83,6 +107,9 @@ for w in websites:
         "scan_time": time.time(),
         "ipv4_addresses": get_ip_addresses(w, 'ipv4'),
         "ipv6_addresses": get_ip_addresses(w, 'ipv6')}
+
+    http_server = get_http_data(w)
+    scans[w]['http_server'] = http_server
 
 # Write scan output to output file
 with open(sys.argv[2], "w") as output_file:
