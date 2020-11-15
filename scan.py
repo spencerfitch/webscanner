@@ -24,6 +24,7 @@ dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9'
 dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9', 
                  '64.6.65.6', '91.239.100.100', '185.228.168.168', 
                  '77.88.8.7', '156.154.70.1', '198.101.242.72', '176.103.130.130']
+                 
 def get_ip_addresses(website, ip_type):
     ip_addresses = []
 
@@ -87,5 +88,5 @@ for w in websites:
 with open(sys.argv[2], "w") as output_file:
     json.dump(scans, output_file, sort_keys=True, indent=4)
 
-sys.stdout.write("exited succesfully")
+sys.stdout.write("exited succesfully\n")
 sys.exit(0)
