@@ -80,7 +80,7 @@ def get_http_data(website: str) -> str:
 
     connect = http.client.HTTPConnection(website)
     head = {'Host': website}
-    connect.request('GET', '/', head)
+    connect.request('GET', '/', headers=head)
     response = connect.getresponse()
 
     server = response.getheader('Server')
