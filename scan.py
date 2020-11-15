@@ -56,7 +56,8 @@ def get_ip_addresses(website, ip_type):
                 if (split_line[1] not in ip_addresses):
                     ip_addresses.append(split_line[1])
 
-    return ip_addresses.sort()
+    ip_addresses.sort()
+    return ip_addresses
 
 
 
