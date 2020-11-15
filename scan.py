@@ -46,8 +46,8 @@ def get_ip_addresses(website, ip_type):
             
         for line in (split_result[1]).split('\n'):
             print([line])
-            if line.split(':  ')[0] == "Address":
-                ip_addresses.append(line.split(':  ')[1])
+            if line.split(': ')[0] == "Address":
+                ip_addresses.append(line.split(': ')[1])
 
     return ip_addresses
 
