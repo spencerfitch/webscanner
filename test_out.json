@@ -1,0 +1,175 @@
+{
+    "amazon.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410841.5738518
+    },
+    "asee.org": {
+        "ipv4_addresses": [
+            "216.185.13.131"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410845.8808618
+    },
+    "auditoryneuroscience.com": {
+        "ipv4_addresses": [
+            "144.214.26.111"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410845.609744
+    },
+    "clocktab.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410845.3750687
+    },
+    "en.wikipedia.org": {
+        "ipv4_addresses": [
+            "208.80.154.224"
+        ],
+        "ipv6_addresses": [
+            "2620:0:861:ed1a::1"
+        ],
+        "scan_time": 1605410840.9013937
+    },
+    "facebook.com": {
+        "ipv4_addresses": [
+            "157.240.2.35"
+        ],
+        "ipv6_addresses": [
+            "2a03:2880:f127:83:face:b00c:0:25de"
+        ],
+        "scan_time": 1605410841.378033
+    },
+    "fandom.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410842.4799411
+    },
+    "gradeinflation.com": {
+        "ipv4_addresses": [
+            "66.70.176.24"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410846.1515238
+    },
+    "illinois.edu": {
+        "ipv4_addresses": [
+            "192.17.172.3"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410844.779848
+    },
+    "imdb.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410842.2590141
+    },
+    "instagram.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410843.2652812
+    },
+    "kellogg.northwestern.edu": {
+        "ipv4_addresses": [
+            "165.124.147.150"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410844.1189733
+    },
+    "kli.org": {
+        "ipv4_addresses": [
+            "208.97.188.67"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410847.0109863
+    },
+    "mccormick.northwestern.edu": {
+        "ipv4_addresses": [
+            "129.105.1.129"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410843.883495
+    },
+    "northwestern.edu": {
+        "ipv4_addresses": [
+            "129.105.136.48"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410843.633108
+    },
+    "pinterest.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410842.6894166
+    },
+    "pmichaud.com": {
+        "ipv4_addresses": [
+            "23.254.203.248"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410846.7750854
+    },
+    "reddit.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410842.0705106
+    },
+    "spacejam.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410846.481411
+    },
+    "stevetarzia.com": {
+        "ipv4_addresses": [
+            "54.245.121.172"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410845.0105028
+    },
+    "tripadvisor.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410842.9716094
+    },
+    "twitter.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410841.177634
+    },
+    "uchicago.edu": {
+        "ipv4_addresses": [
+            "34.200.129.209"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410844.5429552
+    },
+    "users.cs.northwestern.edu": {
+        "ipv4_addresses": [
+            "165.124.180.20"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410844.3289835
+    },
+    "walmart.com": {
+        "ipv4_addresses": [],
+        "ipv6_addresses": [],
+        "scan_time": 1605410843.4157207
+    },
+    "yelp.com": {
+        "ipv4_addresses": [
+            "199.232.76.116"
+        ],
+        "ipv6_addresses": [],
+        "scan_time": 1605410841.8132708
+    },
+    "youtube.com": {
+        "ipv4_addresses": [
+            "172.217.6.14"
+        ],
+        "ipv6_addresses": [
+            "2607:f8b0:4009:811::200e"
+        ],
+        "scan_time": 1605410840.7064505
+    }
+}
