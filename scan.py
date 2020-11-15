@@ -37,7 +37,13 @@ def get_ip_addresses(website, ip_type):
 
     for dns in dns_resolvers:
         
-        result = subprocess.check_output(["nslookup", nstype, w, dns]).decode("utf-8") 
+        try:
+            result = subprocess.check_output(["nslookup", nstype, w, dns]).decode("utf-8") 
+        except subprocess.SubprocessError:
+            # Did not return a result for this combination
+            sys.stderr.write("Nonzero exit code: nslookup " + str(nstype) +" "+ str(w) +" "+ str(dns))
+            continue
+
         split_result = result.split("\n\n")
 
         if (len(split_result) < 2):
