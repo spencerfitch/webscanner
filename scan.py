@@ -19,11 +19,6 @@ import subprocess   # for making cmd scans
 import http.client  # for http connections
 
 
-'''
-dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9', 
-                 '64.6.65.6', '13.239.157.177', '91.239.100.100', '185.228.168.168', 
-                 '77.88.8.7', '156.154.70.1', '198.101.242.72', '176.103.130.130']
-'''
 dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9', 
                  '64.6.65.6', '91.239.100.100', '185.228.168.168', 
                  '77.88.8.7', '156.154.70.1', '198.101.242.72', '176.103.130.130']
@@ -78,10 +73,10 @@ def get_http_data(website: str) -> str:
     # Returns:
     #
 
-    connect = http.client.HTTPConnection(website)
+    connection = http.client.HTTPConnection(website)
     head = {'Host': website}
-    connect.request('GET', '/', headers=head)
-    response = connect.getresponse()
+    connection.request('GET', '/', headers=head)
+    response = connection.getresponse()
 
     server = response.getheader('Server')
 
