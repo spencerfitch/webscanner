@@ -207,7 +207,7 @@ def get_http_data(website: str) -> Tuple[str, bool, bool]:
 
         if response.code >= 300 and response.code <= 310:
             # Redirects directly to https
-            redirect_https, server = follow_http_redirect(response.getheader('Location'), response.getheader('Server'))
+            server, redirect_https = follow_http_redirect(response.getheader('Location'), response.getheader('Server'))
 
         else:
             # No redirect attempt made
@@ -222,21 +222,8 @@ def get_http_data(website: str) -> Tuple[str, bool, bool]:
         listen_http = False
         redirect_https = False
 
-        # Try to get info over https
-        try:
-            # Establish HTTPS connection
-            connection = http.client.HTTPSConnection(website)
-
-            # Make GET request
-            head = {'Host': webiste}
-            connection.request('GET', '/', headers=head)
-            response = connection.getresponse()
-
-            server = response.getheader('Server')
-
-        except:
-            # Not listening for HTTP or HTTPS
-            server = None
+        # Try https connection
+        server = get_https_data(website, '/')
 
     
     return server, listen_http, redirect_https
