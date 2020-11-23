@@ -89,7 +89,7 @@ def parse_url(url: str) -> Tuple[str, str, str]:
     return http_type, host, path
 
 
-def get_https_data(host: str, path: str) -> str:
+def get_https_data(host: str, path: str) -> Tuple[str, bool]:
     '''
     Return server info of basic https request
 
@@ -97,7 +97,8 @@ def get_https_data(host: str, path: str) -> str:
         host (string) : hostname of destination server
         path (string) : path for destination resource
     Returns:
-        server (string) : server info for https page
+        server (string) : server info for HTTPS page
+        hsts (bool) : does HTTPS page support HTTPS Strict Transport Security
     '''
     try:
         # Establish HTTPS connection
@@ -111,16 +112,16 @@ def get_https_data(host: str, path: str) -> str:
         # Teardown connection
         connection.close()
 
-        return response.getheader('Server')
+        return response.getheader('Server'), (response.getheader('STrict-Transport-Security') != None)
 
     except:
         # HTTPS connection failed?
         print('HTTPS connection failed for : ' + host)
-        return None
+        return None, False
 
 
 
-def follow_http_redirect(url: str, server: str) -> Tuple[str, bool]:
+def follow_http_redirect(url: str, server: str) -> Tuple[str, bool, bool]:
     '''
     Indicates if HTTP 30X redirects to HTTPS site in <10 redirects
 
@@ -130,12 +131,14 @@ def follow_http_redirect(url: str, server: str) -> Tuple[str, bool]:
     Returns:
         server (string) : server info of final redirect
         redirect_https (boolean) : did redirects lead to HTTPS page
+        hsts (boolean) : does final page support HTTP Strict Transport Security
     '''
     http_type, host, path = parse_url(url)
 
     if http_type == 'https:':
         # Initial redirect is https ---> No redirect follow needed
-        return get_https_data(host, path), True
+        server, hsts = get_https_data(host, path)
+        return server, True, hsts
 
     count = 0
     while count < 10:
@@ -163,7 +166,8 @@ def follow_http_redirect(url: str, server: str) -> Tuple[str, bool]:
 
             if http_type == 'https:':
                 # URL is https ---> Get server info and return true
-                return get_https_data(host, path), True
+                server, hsts = get_https_data(host, path)
+                return server, True, hsts
 
             else:
                 # URL not https ---> Try redirecting again
@@ -172,10 +176,10 @@ def follow_http_redirect(url: str, server: str) -> Tuple[str, bool]:
 
         except:
             # Redirect failed
-            return server, False
+            return server, False, False
     
     # Tried to redirect too many times
-    return server, False
+    return server, False, False
 
 
 
@@ -183,7 +187,7 @@ def follow_http_redirect(url: str, server: str) -> Tuple[str, bool]:
     
 
 
-def get_http_data(website: str) -> Tuple[str, bool, bool]:
+def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
     ''' 
     Retrieve HTTP request contents
 
@@ -207,12 +211,13 @@ def get_http_data(website: str) -> Tuple[str, bool, bool]:
 
         if response.code >= 300 and response.code <= 310:
             # Redirects directly to https
-            server, redirect_https = follow_http_redirect(response.getheader('Location'), response.getheader('Server'))
+            server, redirect_https, hsts = follow_http_redirect(response.getheader('Location'), response.getheader('Server'))
 
         else:
             # No redirect attempt made
             server = response.getheader('Server')
             redirect_https = False
+            hsts = False
 
         connection.close()
 
@@ -221,12 +226,13 @@ def get_http_data(website: str) -> Tuple[str, bool, bool]:
         connection.close()
         listen_http = False
         redirect_https = False
+        hsts = False
 
         # Try https connection
         server = get_https_data(website, '/')
 
     
-    return server, listen_http, redirect_https
+    return server, listen_http, redirect_https, hsts
 
 
 
@@ -249,11 +255,12 @@ for w in websites:
         "ipv4_addresses": get_ip_addresses(w, 'ipv4'),
         "ipv6_addresses": get_ip_addresses(w, 'ipv6')}
 
-    http_server, listen_http, redirect_https = get_http_data(w)
+    http_server, listen_http, redirect_https, hsts = get_http_data(w)
 
     scans[w]['http_server'] = http_server
     scans[w]['insecure_http'] = listen_http
     scans[w]['redirect_to_https'] = redirect_https
+    scans[w]['hsts'] = hsts
 
 # Write scan output to output file
 with open(sys.argv[2], "w") as output_file:
