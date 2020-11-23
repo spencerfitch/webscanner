@@ -101,7 +101,7 @@ def get_https_data(host: str, path: str) -> str:
     '''
     try:
         # Establish HTTPS connection
-        connection = http.clinet.HTTPSConnection(host)
+        connection = http.client.HTTPSConnection(host)
 
         # Make request
         head = {'Host': host}
