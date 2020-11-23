@@ -115,7 +115,7 @@ def get_https_data(host: str, path: str) -> str:
 
     except:
         # HTTPS connection failed?
-        print('HTTPS connection failed?')
+        print('HTTPS connection failed for : ' + host)
         return None
 
 
