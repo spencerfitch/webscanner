@@ -294,9 +294,14 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
             # nslookup each ipv4 and dns combination
             try:
                 result = subprocess.getoutput(['nslookup', '-type=PTR', ipv4, dns])
-                split_result = (result.split('Non-authoritative answer:\n')[1]).split('\n')
+                split_result = result.split('Non-authoritative anwer:\n')
+                if len(split_result) < 2:
+                    # No answers provided
+                    continue
 
-                for line in split_result:
+                lines = split_result[1].split('\n')
+
+                for line in lines:
                     if line == '':
                         # Hit blank line, so no more to read
                         break
