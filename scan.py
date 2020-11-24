@@ -261,7 +261,13 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
         # Parse result to retreive root_ca
         certificate_chain = result.split('---')[1]
         root = certificate_chain.split('\n')[-2]
-        root_ca = (root.split(',')[0]).split(' = ')[-1]
+        
+        # Find name category of root
+        categories = (root.split('i:')[-1]).split(', ')
+        for cat in categories:
+            if cat[0] == 'O':
+                root_ca = cat.split(' = ')[-1]
+                break
     
     except subprocess.CalledProcessError:
         # No tls supported ---> root_ca is none
