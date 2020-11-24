@@ -183,10 +183,6 @@ def follow_http_redirect(url: str, server: str) -> Tuple[str, bool, bool]:
 
 
 
-
-    
-
-
 def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
     ''' 
     Retrieve HTTP request contents
@@ -199,7 +195,7 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
 
     try:
         # Establish connection
-        connection = http.client.HTTPConnection(website)
+        connection = http.client.HTTPConnection(website, timeout=2)
 
         # Make GET request
         head = {'Host': website}
@@ -235,6 +231,47 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
     return server, listen_http, redirect_https, hsts
 
 
+def get_tls_data(host: str) -> Tuple[List[str], str]:
+    ''' 
+    Retrieve TLS versions and root certificate for a given host
+
+    Arguments:
+        host (string): host URL to query
+    Returns:
+        tls_versions (Listof string): list of supported TLS versions
+        root_ca (string): root certificate authority
+    '''
+    tls_options = ['-tls1', '-tls1_1', '-tls1_2', '-tls1_3']
+    tls_strings = ['TLSv1.0', 'TLSv1.1', 'TLSv1.2', 'TLSv1.3']
+
+    tls_versions = []
+
+    for tls in range(len(tls_options)):
+        try:
+            result = subprocess.check_output('echo | openssl s_client {0} -connect {1}:443'.format(tls_options[tls], host), shell=True)
+            
+            # Didn't throw error on nonzero return code, so must have successfully connected
+            tls_versions.append(tls_strings[tls])
+        except subprocess.CalledProcessError:
+            # Nonzero return code
+            continue
+
+    try:
+        result = subprocess.check_output('echo | openssl s_client -connect {0}:443'.format(host), shell=True)
+        # Parse result to retreive root_ca
+        certificate_chain = result.split('---')[1]
+        root = certificate_chain.split('\n')[-2]
+        root_ca = (root.split(',')[0]).split(' = ')[-1]
+    
+    except subprocess.CalledProcessError:
+        # No tls supported ---> root_ca is none
+        root_ca = None
+
+
+    return tls_versions, root_ca
+
+
+
 
 # Check for command line argument
 if len(sys.argv) != 3:
@@ -261,6 +298,12 @@ for w in websites:
     scans[w]['insecure_http'] = listen_http
     scans[w]['redirect_to_https'] = redirect_https
     scans[w]['hsts'] = hsts
+
+    tls_versions, root_ca = get_tls_data(w)
+
+    scans[w]['tls_versions'] = tls_versions
+    scans[w]['root_ca'] = root_ca
+    
 
 # Write scan output to output file
 with open(sys.argv[2], "w") as output_file:
