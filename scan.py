@@ -295,8 +295,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
         for dns in dns_resolvers:
             # nslookup each ipv4 and dns combination
             try:
-                result = subprocess.check_output(['nslookup', '-type=PTR', ipv4, dns])
-                print('got result')
+                result = subprocess.check_output(['nslookup', '-type=PTR', ipv4, dns]).decode('utf-8')
                 split_result = result.split('Non-authoritative anwer:\n')
                 if len(split_result) < 2:
                     # No answers provided
