@@ -278,6 +278,7 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
 
 
 
+
 def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
     '''
     Retrieve dns data for all ipv4 addresses
@@ -287,6 +288,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
     Returns:
         rdns (Listof string): all rdns data for these ip addresses
     '''
+    print('start rdns scan')
     rdns = []
 
     for ipv4 in ipv4_addresses:
@@ -294,6 +296,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
             # nslookup each ipv4 and dns combination
             try:
                 result = subprocess.getoutput(['nslookup', '-type=PTR', ipv4, dns])
+                print('got result')
                 split_result = result.split('Non-authoritative anwer:\n')
                 if len(split_result) < 2:
                     # No answers provided
