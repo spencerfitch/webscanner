@@ -278,6 +278,46 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
 
 
 
+def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
+    '''
+    Retrieve dns data for all ipv4 addresses
+
+    Arguments:
+        ipv4_addresses (Listof string): all ipv4 addresses to query
+    Returns:
+        rdns (Listof string): all rdns data for these ip addresses
+    '''
+    rdns = []
+
+    for ipv4 in ipv4_addresses:
+        for dns in dns_resolvers:
+            # nslookup each ipv4 and dns combination
+            try:
+                result = subprocess.getoutput(['nslookup', '-type=PTR', ipv4, dns])
+                split_result = (result.split('Non-authoritative answer:\n')[1]).split('\n')
+
+                for line in split_result:
+                    if line == '':
+                        # Hit blank line, so no more to read
+                        break
+                
+                    split_line = line.split('\t')
+                    for section in split_line:
+                        if (section[:4] == 'name') and (section[7:] not in rdns):
+                            rdns.append(section[7:])
+            
+            except subprocess.CalledProcessError:
+                # Command returned nonzero exit code ---> try next combination
+                continue
+    
+    return rdns
+
+
+
+
+
+
+
 
 # Check for command line argument
 if len(sys.argv) != 3:
@@ -298,6 +338,12 @@ for w in websites:
         "ipv4_addresses": get_ip_addresses(w, 'ipv4'),
         "ipv6_addresses": get_ip_addresses(w, 'ipv6')}
 
+    ipv4_addresses = get_ip_addresses(w, 'ipv4')
+    ipv6_addresses = get_ip_addresses(w, 'ipv6')
+
+    scans[w]['ipv4_addresses'] = ipv4_addresses
+    scans[w]['ipv6_addresses'] = ipv6_addresses
+
     http_server, listen_http, redirect_https, hsts = get_http_data(w)
 
     scans[w]['http_server'] = http_server
@@ -309,6 +355,10 @@ for w in websites:
 
     scans[w]['tls_versions'] = tls_versions
     scans[w]['root_ca'] = root_ca
+
+    rdns = get_dns_data(ipv4_addresses)
+
+    scans[w]['rdns'] = rdns
 
 
 # Write scan output to output file
