@@ -316,7 +316,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
             
             except subprocess.CalledProcessError:
                 # Command returned nonzero exit code ---> try next combination
-                print('----------cp error-------------')
+                print('---------cp-error : nslookup -type=PTR {0} {1}'.format(ipv4, dns))
                 continue
     
     return rdns
