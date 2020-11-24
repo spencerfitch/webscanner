@@ -309,6 +309,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
                     split_line = line.split('\t')
                     for section in split_line:
                         if (section[:4] == 'name') and (section[7:] not in rdns):
+                            print('Adding {0} to rdns'.format(section[7:]))
                             rdns.append(section[7:])
             
             except subprocess.CalledProcessError:
