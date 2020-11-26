@@ -401,17 +401,17 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
         try:
             loc_parts.append(ip_data['city']['names']['en'])
         except KeyError:
-            print('KEY ERROR')
+            print('City key error: {0}'.format(ipv4))
 
         try:
             loc_parts.append(ip_data['subdivisions']['names']['en'])
         except KeyError:
-            print('KEY ERROR')
+            print('Subdivision key error: {0}'.format(ipv4))
         
         try:
             loc_parts.append(ip_data['country']['names']['en'])
         except KeyError:
-            print('KEY ERROR')
+            print('Country key error: {0}'.format(ipv4))
 
         loc = ', '.join(loc_parts)
 
