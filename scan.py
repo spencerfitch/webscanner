@@ -65,9 +65,8 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
             
         for line in (split_result[1]).split('\n'):
             split_line = line.split(': ')
-            if (split_line[0] == "Address"):
-                if (split_line[1] not in ip_addresses):
-                    ip_addresses.append(split_line[1])
+            if (split_line[0] == "Address") and (split_line[1] not in ip_addresses):
+                ip_addresses.append(split_line[1])
 
     ip_addresses.sort()
     return ip_addresses
@@ -307,13 +306,14 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
             lines = split_result[1].split('\n')
 
             for line in lines:
+                print(line)
                 if line == '':
                     # Hit blank line, so no more to read
                     break
                 
                 split_line = line.split('\t')
                 for section in split_line:
-                    if (section[:4] == 'name') and (section[7:] not in rdns):
+                    if section[:4] == 'name':
                         print('Adding {0} to rdns'.format(section[7:]))
                         rdns.append(section[7:])
             
