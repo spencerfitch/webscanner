@@ -47,7 +47,7 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
     for dns in dns_resolvers:
         
         try:
-            result = subprocess.check_output(["nslookup", nstype, w, dns]).decode("utf-8") 
+            result = subprocess.check_output(["nslookup", nstype, w, dns], timeout=2).decode("utf-8") 
         except subprocess.SubprocessError:
             # Did not return a result for this combination
             print("Nonzero exit code: nslookup " + str(nstype) +" "+ str(w) +" "+ str(dns))
@@ -248,7 +248,7 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
 
     for tls in range(len(tls_options)):
         try:
-            result = subprocess.check_output('echo | openssl s_client {0} -connect {1}:443'.format(tls_options[tls], host), shell=True).decode('utf-8')
+            result = subprocess.check_output('echo | openssl s_client {0} -connect {1}:443'.format(tls_options[tls], host), shell=True, timeout=2).decode('utf-8')
             
             # Didn't throw error on nonzero return code, so must have successfully connected
             tls_versions.append(tls_strings[tls])
@@ -257,7 +257,7 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
             continue
 
     try:
-        result = subprocess.check_output('echo | openssl s_client -connect {0}:443'.format(host), shell=True).decode('utf-8')
+        result = subprocess.check_output('echo | openssl s_client -connect {0}:443'.format(host), shell=True, timeout=2).decode('utf-8')
         # Parse result to retreive root_ca
         certificate_chain = result.split('---')[1]
         root = certificate_chain.split('\n')[-2]
@@ -295,7 +295,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
         for dns in dns_resolvers:
             # nslookup each ipv4 and dns combination
             try:
-                result = subprocess.check_output(['nslookup', '-type=PTR', ipv4, dns]).decode('utf-8')
+                result = subprocess.check_output(['nslookup', '-type=PTR', ipv4, dns], timeout=2).decode('utf-8')
                 split_result = result.split('Non-authoritative anwer:\n')
                 if len(split_result) < 2:
                     # No answers provided
@@ -365,9 +365,9 @@ for w in websites:
     scans[w]['tls_versions'] = tls_versions
     scans[w]['root_ca'] = root_ca
 
-    rdns = get_dns_data(ipv4_addresses)
+    #rdns = get_dns_data(ipv4_addresses)
 
-    scans[w]['rdns'] = rdns
+    #scans[w]['rdns'] = rdns
 
 
 # Write scan output to output file
