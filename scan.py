@@ -33,10 +33,10 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
     Queries dns_resolvers for all ip addresses of webiste of particular ip_type
 
     Arguments:
-        website (string) : website to make DNS requests for
-        ip_type (string) : type of IP address to query for ('ipv4' or 'ipv6')
+        website : website to make DNS requests for
+        ip_type : type of IP address to query for ('ipv4' or 'ipv6')
     Return:
-        ip_addresses (listof string) : list of all unique IP addresses for particular website
+        ip_addresses : list of all unique IP addresses for particular website
     '''
     ip_addresses = []
 
@@ -57,11 +57,7 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
             print(e)
             continue
 
-        split_result = result.split("\n\n")
-
-        if (len(split_result) < 2):
-            print('unable to split response: nslookup ' + str(nstype) + ' ' + str(w) + ' ' + str(dns))
-            continue    
+        split_result = result.split("\n\n")  
             
         for line in (split_result[1]).split('\n'):
             split_line = line.split(': ')
@@ -77,11 +73,11 @@ def parse_url(url: str) -> Tuple[str, str, str]:
     Parse url into components: http(s), host, path
 
     Arguments:
-        url (string) : full url to parse
+        url (str) : full url to parse
     Returns:
-        http_type (string) : http or https string
-        host (string) : full hostname of website  
-        path (string) : exact redirect path
+        http_type (str) : http or https string
+        host (str) : full hostname of website  
+        path (str) : exact redirect path
     '''
     split_url = url.split('/')
 
@@ -97,11 +93,11 @@ def get_https_data(host: str, path: str) -> Tuple[str, bool]:
     Return server info of basic https request
 
     Arguments:
-        host (string) : hostname of destination server
-        path (string) : path for destination resource
+        host : hostname of destination server
+        path : path for destination resource
     Returns:
-        server (string) : server info for HTTPS page
-        hsts (bool) : does HTTPS page support HTTPS Strict Transport Security
+        server  : server info for HTTPS page
+        hsts    : does HTTPS page support HTTPS Strict Transport Security
     '''
     try:
         # Establish HTTPS connection
@@ -129,12 +125,12 @@ def follow_http_redirect(url: str, server: str) -> Tuple[str, bool, bool]:
     Indicates if HTTP 30X redirects to HTTPS site in <10 redirects
 
     Arguments:
-        url (string) : full url to redirect to
-        server (string) : initial server information
+        url     : full url to redirect to
+        server  : initial server information
     Returns:
-        server (string) : server info of final redirect
-        redirect_https (boolean) : did redirects lead to HTTPS page
-        hsts (boolean) : does final page support HTTP Strict Transport Security
+        server          : server info of final redirect
+        redirect_https  : did redirects lead to HTTPS page
+        hsts            : does final page support HTTP Strict Transport Security
     '''
     http_type, host, path = parse_url(url)
 
@@ -191,7 +187,7 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
     Retrieve HTTP request contents
 
     Arguments:
-        website (string) : host website to make HTTP request for
+        website : host website to make HTTP request for
     Returns:
 
     '''
@@ -240,10 +236,10 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
     Retrieve TLS versions and root certificate for a given host
 
     Arguments:
-        host (string): host URL to query
+        host : host URL to query
     Returns:
-        tls_versions (Listof string): list of supported TLS versions
-        root_ca (string): root certificate authority
+        tls_versions : list of supported TLS versions
+        root_ca      : root certificate authority
     '''
     tls_options = ['-tls1', '-tls1_1', '-tls1_2', '-tls1_3']
     tls_strings = ['TLSv1.0', 'TLSv1.1', 'TLSv1.2', 'TLSv1.3']
@@ -259,7 +255,6 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
         except subprocess.CalledProcessError:
             # Nonzero return code
             continue
-
     try:
         result = subprocess.check_output('echo | openssl s_client -connect {0}:443'.format(host), shell=True, timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
         # Parse result to retreive root_ca
@@ -288,9 +283,9 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
     Retrieve dns data for all ipv4 addresses
 
     Arguments:
-        ipv4_addresses (Listof string): all ipv4 addresses to query
+        ipv4_addresses : all ipv4 addresses to query
     Returns:
-        rdns (Listof string): all rdns data for these ip addresses
+        rdns : all rdns data for these ip addresses
     '''
     rdns = []
 
@@ -313,19 +308,70 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
                 split_line = line.split('\t')
                 for section in split_line:
                     if (section[:4] == 'name') and (section[7:] not in rdns):
-                        print('Adding {0} to rdns'.format(section[7:]))
+                        #print('Adding {0} to rdns'.format(section[7:]))
                         rdns.append(section[7:])
             
         except subprocess.CalledProcessError:
             # Command returned nonzero exit code ---> try next combination
-            print('---------cp-error : nslookup -type=PTR {0}'.format(ipv4))
+            #print('---------cp-error : nslookup -type=PTR {0}'.format(ipv4))
             continue
     
     return rdns
 
 
 
+def parse_time(time_string: str) -> float:
+    '''
+    Parse time string to time in miliseconds
 
+    Arguments:
+        time_string : string of the form 'XmX.XXXs'
+    Returns:
+        time : equivalent time in milliseconds
+    '''
+    split_time = time_string[:-1].split('m')
+    min_ms = float(split_time[0]) * 60000
+    sec_ms = float(split_time[1]) * 1000
+    return min_ms + sec_ms
+
+
+
+def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
+    '''
+    Return range of rount trip time for all ipv4 addresses
+
+    Arguments:
+        ipv4_addresses : all ipv4 addresses to query
+    Returns:
+        rtt_range : [min,max] of rount trip time across all ipv4 addresses
+    '''
+    rtt_range = [float('inf'), 0]
+
+    for ipv4 in ipv4_addresses:
+        try:
+            # Measure rtt from commandline
+            result = subprocess.check_output(["sh", "-c", "time echo -e '\x1dclose\x0d' | telnet {0} 443".format(ipv4)], 
+                                             timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
+        except subprocess.CalledProcessError:
+            # Failed to get rtt -> try next ipv4
+            print('Failed to get rtt')
+            continue
+            
+
+        for line in result.split('\n'):
+            if line[:4] == 'real':
+                # Parse rtt
+                rtt = parse_time(line.split('\t')[1])
+                # Update rtt_range
+                rtt_range = [min(rtt, rtt_range[0]), max(rtt, rtt_range[1])]
+                # Continue to next ipv4
+                break
+    
+    if rtt_range == [float('inf'), 0]:
+        print('I sure hope you never see this')
+
+    return rtt_range
+            
 
 
 
@@ -370,6 +416,10 @@ for w in websites:
     rdns = get_dns_data(ipv4_addresses)
 
     scans[w]['rdns'] = rdns
+
+    rtt_range = get_rtt_range(ipv4_addresses)
+
+    scans[w]['rtt_range'] = rtt_range
 
 
 # Write scan output to output file
