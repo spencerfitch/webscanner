@@ -10,6 +10,10 @@
 #    0 - exited normally
 #    1 - bad command line input
 
+# TODO
+#   - Ask about hsts (should we only base it on redirects or should we try https connection too)
+#
+
 import sys
 from typing import List, Tuple
 
@@ -289,36 +293,34 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
     Returns:
         rdns (Listof string): all rdns data for these ip addresses
     '''
-    print('start rdns scan')
     rdns = []
 
     for ipv4 in ipv4_addresses:
-        for dns in dns_resolvers:
-            # nslookup each ipv4 and dns combination
-            try:
-                result = subprocess.check_output(['nslookup', '-type=PTR', ipv4, dns], timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
-                split_result = result.split('Non-authoritative anwer:\n')
-                if len(split_result) < 2:
-                    # No answers provided
-                    continue
-
-                lines = split_result[1].split('\n')
-
-                for line in lines:
-                    if line == '':
-                        # Hit blank line, so no more to read
-                        break
-                
-                    split_line = line.split('\t')
-                    for section in split_line:
-                        if (section[:4] == 'name') and (section[7:] not in rdns):
-                            print('Adding {0} to rdns'.format(section[7:]))
-                            rdns.append(section[7:])
-            
-            except subprocess.CalledProcessError:
-                # Command returned nonzero exit code ---> try next combination
-                print('---------cp-error : nslookup -type=PTR {0} {1}'.format(ipv4, dns))
+        # nslookup each ipv4 of website
+        try:
+            result = subprocess.check_output(['nslookup', '-type=PTR', ipv4], timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
+            split_result = result.split('Non-authoritative anwer:\n')
+            if len(split_result) < 2:
+                # No answers provided
                 continue
+
+            lines = split_result[1].split('\n')
+
+            for line in lines:
+                if line == '':
+                    # Hit blank line, so no more to read
+                    break
+                
+                split_line = line.split('\t')
+                for section in split_line:
+                    if (section[:4] == 'name') and (section[7:] not in rdns):
+                        print('Adding {0} to rdns'.format(section[7:]))
+                        rdns.append(section[7:])
+            
+        except subprocess.CalledProcessError:
+            # Command returned nonzero exit code ---> try next combination
+            print('---------cp-error : nslookup -type=PTR {0}'.format(ipv4))
+            continue
     
     return rdns
 
@@ -366,9 +368,9 @@ for w in websites:
     scans[w]['tls_versions'] = tls_versions
     scans[w]['root_ca'] = root_ca
 
-    #rdns = get_dns_data(ipv4_addresses)
+    rdns = get_dns_data(ipv4_addresses)
 
-    #scans[w]['rdns'] = rdns
+    scans[w]['rdns'] = rdns
 
 
 # Write scan output to output file
