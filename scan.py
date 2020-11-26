@@ -113,7 +113,7 @@ def get_https_data(host: str, path: str) -> Tuple[str, bool]:
         # Teardown connection
         connection.close()
 
-        return response.getheader('Server'), (response.getheader('STrict-Transport-Security') != None)
+        return response.getheader('Server'), (response.getheader('Strict-Transport-Security') != None)
 
     except:
         # HTTPS connection failed?
