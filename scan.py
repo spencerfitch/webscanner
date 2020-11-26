@@ -212,6 +212,7 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
             # No redirect attempt made ---> Try HTTPS
             redirect_https = False
             server = response.getheader('Server')
+            #PAY ATTENTION TO THIS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             _, hsts = get_https_data(website, '/')
             #hsts = False
 
@@ -225,7 +226,7 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
         hsts = False
 
         # Try https connection
-        server = get_https_data(website, '/')
+        server, _ = get_https_data(website, '/')
 
     
     return server, listen_http, redirect_https, hsts
