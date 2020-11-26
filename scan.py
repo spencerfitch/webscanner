@@ -399,17 +399,17 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
         loc_parts = []
 
         try:
-            loc.append(ip_data['city']['names']['en'])
+            loc_parts.append(ip_data['city']['names']['en'])
         except KeyError:
             print('KEY ERROR')
 
         try:
-            loc.append(ip_data['subdivisions']['names']['en'])
+            loc_parts.append(ip_data['subdivisions']['names']['en'])
         except KeyError:
             print('KEY ERROR')
         
         try:
-            loc.append(ip_data['country']['names']['en'])
+            loc_parts.append(ip_data['country']['names']['en'])
         except KeyError:
             print('KEY ERROR')
 
