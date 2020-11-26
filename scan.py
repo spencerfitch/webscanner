@@ -211,10 +211,11 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
             server, redirect_https, hsts = follow_http_redirect(response.getheader('Location'), response.getheader('Server'))
 
         else:
-            # No redirect attempt made
-            server = response.getheader('Server')
+            # No redirect attempt made ---> Try HTTPS
             redirect_https = False
-            hsts = False
+            server = response.getheader('Server')
+            _, hsts = get_https_data(website, '/')
+            #hsts = False
 
         connection.close()
 
