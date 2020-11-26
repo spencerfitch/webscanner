@@ -50,7 +50,6 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
             result = subprocess.check_output(["nslookup", nstype, w, dns], timeout=2, stderr=subprocess.STDOUT).decode("utf-8") 
         except subprocess.SubprocessError as e:
             # Did not return a result for this combination
-            print("Nonzero exit code: nslookup " + str(nstype) +" "+ str(w) +" "+ str(dns))
             print(e)
             continue
 
