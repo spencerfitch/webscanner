@@ -21,6 +21,7 @@ import time         # for epoch time
 import json         # for packaging result
 import subprocess   # for making cmd scans
 import http.client  # for http connections
+import maxminddb    # for geolocations
 
 
 dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9', 
@@ -375,6 +376,54 @@ def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
             
 
 
+def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
+    '''
+    Retrieve all real-world locations for all of the ipv4 addresses
+
+    Arguments:
+        ipv4_addresses : list of ipv4 addresses to search
+    Returns:
+        geo_locations : list of real-world locations for the ipv4 addresses
+    '''
+    reader = maxminddb.open_database('GeoLite2-City.mmdb')
+
+    geo_locations = []
+
+    for ipv4 in ipv4_addresses:
+        ip_data = reader.get(ipv4)
+
+        if ip_data == None:
+            # No data for ip in database ---> continue
+            continue
+        
+        loc_parts = []
+
+        try:
+            loc.append(ip_data['city']['names']['en'])
+        except KeyError:
+            print('KEY ERROR')
+
+        try:
+            loc.append(ip_data['subdivisions']['names']['en'])
+        except KeyError:
+            print('KEY ERROR')
+        
+        try:
+            loc.append(ip_data['country']['names']['en'])
+        except KeyError:
+            print('KEY ERROR')
+
+        loc = ', '.join(loc_parts)
+
+        if (loc != '') and (loc not in geo_locations):
+            geo_locations.append(loc)
+
+    return geo_locations
+
+
+
+
+
 
 
 # Check for command line argument
@@ -415,12 +464,13 @@ for w in websites:
     scans[w]['root_ca'] = root_ca
 
     rdns = get_dns_data(ipv4_addresses)
-
     scans[w]['rdns'] = rdns
 
     rtt_range = get_rtt_range(ipv4_addresses)
-
     scans[w]['rtt_range'] = rtt_range
+
+    geo_locations = get_geo_locations(ipv4_addresses)
+    scans[w]['geo_locations'] = geo_locations
 
 
 # Write scan output to output file
