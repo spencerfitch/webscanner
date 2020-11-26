@@ -390,10 +390,10 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
     geo_locations = []
 
     for ipv4 in ipv4_addresses:
-        ip_data = reader.get(ipv4)
-
-        if ip_data == None:
-            # No data for ip in database ---> continue
+        try:
+            ip_data = reader.get(ipv4)
+        except ValueError:
+            # No data for ip in database
             continue
         
         loc_parts = []
@@ -401,22 +401,34 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
         try:
             loc_parts.append(ip_data['city']['names']['en'])
         except KeyError:
+            # No city data in database
             print('City key error: {0}'.format(ipv4))
 
         try:
             loc_parts.append(ip_data['subdivisions']['names']['en'])
         except KeyError:
+            # No subdivision (state) data in database
             print('Subdivision key error: {0}'.format(ipv4))
         
         try:
-            loc_parts.append(ip_data['country']['names']['en'])
-        except KeyError:
-            print('Country key error: {0}'.format(ipv4))
+            try:
+                loc_parts.append(ip_data['country']['names']['en'])
+            except KeyError:
+                # No country data in database
+                print('Country key error: {0}'.format(ipv4))
+        except TypeError as e:
+            print(e)
+            print(ipv4)
+            print(ip_data)
+            sys.exit(1)
 
+        # Build loc and add to geo_locations if not already added
         loc = ', '.join(loc_parts)
-
         if (loc != '') and (loc not in geo_locations):
             geo_locations.append(loc)
+
+    # Close database reader
+    reader.close()
 
     return geo_locations
 
