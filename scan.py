@@ -299,6 +299,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
         try:
             result = subprocess.check_output(['nslookup', '-type=PTR', ipv4], timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
             split_result = result.split('Non-authoritative anwer:\n')
+            print(split_result)
             if len(split_result) < 2:
                 # No answers provided
                 continue
