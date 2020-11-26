@@ -252,7 +252,7 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
             
             # Didn't throw error on nonzero return code, so must have successfully connected
             tls_versions.append(tls_strings[tls])
-        except subprocess.CalledProcessError:
+        except subprocess.SubprocessError:
             # Nonzero return code
             continue
     try:
@@ -268,7 +268,7 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
                 root_ca = cat.split(' = ')[-1]
                 break
     
-    except subprocess.CalledProcessError:
+    except subprocess.SubprocessError:
         # No tls supported ---> root_ca is none
         root_ca = None
 
@@ -311,7 +311,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
                         #print('Adding {0} to rdns'.format(section[7:]))
                         rdns.append(section[7:])
             
-        except subprocess.CalledProcessError:
+        except subprocess.SubprocessError:
             # Command returned nonzero exit code ---> try next combination
             #print('---------cp-error : nslookup -type=PTR {0}'.format(ipv4))
             continue
@@ -352,7 +352,7 @@ def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
             # Measure rtt from commandline
             result = subprocess.check_output(["sh", "-c", "time echo -e '\x1dclose\x0d' | telnet {0} 443".format(ipv4)], 
                                              timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
-        except subprocess.CalledProcessError:
+        except subprocess.SubprocessError:
             # Failed to get rtt -> try next ipv4
             print('Failed to get rtt')
             continue
