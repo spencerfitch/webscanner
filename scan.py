@@ -298,8 +298,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
         # nslookup each ipv4 of website
         try:
             result = subprocess.check_output(['nslookup', '-type=PTR', ipv4], timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
-            split_result = result.split('Non-authoritative anwer:\n')
-            print(split_result)
+            split_result = result.split('Non-authoritative answer:\n')
             if len(split_result) < 2:
                 # No answers provided
                 continue
@@ -307,7 +306,6 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
             lines = split_result[1].split('\n')
 
             for line in lines:
-                print(line)
                 if line == '':
                     # Hit blank line, so no more to read
                     break
