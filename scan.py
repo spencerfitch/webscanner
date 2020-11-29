@@ -398,13 +398,29 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
         
         loc_parts = []
 
+        for cat in ['city', 'subdivisions', 'country']:
+            try:
+                cat_data = ip_data[cat]
+                # Extract dict from list if needed
+                if type(cat_data) == list: cat_data = cat_data[0]
+                loc_parts.append(cat_data['names']['en'])
+            except KeyError:
+                # Data not in database
+                print('{0} \t: key error - {1}').format(ipv4, cat)
+
+
+        '''
         try:
-            loc_parts.append(ip_data['city']['names']['en'])
+            city_data = ip_data['city']
+            # Extract dict from list if needed
+            if type(city_data) == list: city_data = city_data[0]
+            loc_parts.append(city_data['names']['en'])
         except KeyError:
             # No city data in database
             print('{0} \t: key error - city'.format(ipv4))
 
         try:
+            subdiv_data = ip_data['subdivisions']
             loc_parts.append(ip_data['subdivisions']['names']['en'])
         except KeyError:
             # No subdivision (state) data in database
@@ -420,6 +436,7 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
         except KeyError:
             # No country data in database
             print('{0} \t: key error - country'.format(ipv4))
+        '''
 
 
         # Build loc and add to geo_locations if not already added
