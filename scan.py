@@ -265,9 +265,14 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
         
         # Find name category of root
         categories = (root.split('i:')[-1]).split(', ')
-        for cat in categories:
+        for i in range(len(categories)):
+            cat = categories[i]
             if cat[0] == 'O':
                 root_ca = cat.split(' = ')[-1]
+                # Handle quoted expressions that get separated by ', ' split
+                while root_ca[0] == '\"' and root_ca[-1] != '\"':
+                    i += 1
+                    root_ca.append(categories[i])
                 break
     
     except subprocess.SubprocessError:
