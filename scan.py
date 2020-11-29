@@ -272,7 +272,7 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
                 # Handle quoted expressions that get separated by ', ' split
                 while root_ca[0] == '\"' and root_ca[-1] != '\"':
                     i += 1
-                    root_ca += categories[i]
+                    ', '.join(root_ca, categories[i])
                 break
     
     except subprocess.SubprocessError:
@@ -482,5 +482,5 @@ for w in websites:
 with open(sys.argv[2], "w") as output_file:
     json.dump(scans, output_file, sort_keys=True, indent=4)
 
-sys.stdout.write("exited succesfully\n")
+sys.stdout.write("exited normally\n")
 sys.exit(0)
