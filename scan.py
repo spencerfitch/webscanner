@@ -402,20 +402,19 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
             loc_parts.append(ip_data['city']['names']['en'])
         except KeyError:
             # No city data in database
-            print('City key error: {0}'.format(ipv4))
+            print('{0} : city key error'.format(ipv4))
 
         try:
             loc_parts.append(ip_data['subdivisions']['names']['en'])
         except KeyError:
             # No subdivision (state) data in database
-            print('Subdivision key error: {0}'.format(ipv4))
+            print('{0} : subdivision key error'.format(ipv4))
         
         try:
-            try:
-                loc_parts.append(ip_data['country']['names']['en'])
-            except KeyError:
-                # No country data in database
-                print('Country key error: {0}'.format(ipv4))
+            loc_parts.append(ip_data['country']['names']['en'])
+        except KeyError:
+            # No country data in database
+            print('{0} : country key error'.format(ipv4))
         except TypeError as e:
             print(e)
             print(ipv4)
