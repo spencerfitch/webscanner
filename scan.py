@@ -52,7 +52,7 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
     for dns in dns_resolvers:
         
         try:
-            result = subprocess.check_output(["nslookup", nstype, w, dns], timeout=2, stderr=subprocess.STDOUT).decode("utf-8") 
+            result = subprocess.check_output(["nslookup", nstype, w, dns], timeout=3, stderr=subprocess.STDOUT).decode("utf-8") 
         except subprocess.SubprocessError as e:
             # Did not return a result for this combination
             print(e)
@@ -407,38 +407,8 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
             except KeyError:
                 # Data not in database
                 print('{0}\t: key error - {1}'.format(ipv4, cat))
-                print('{0}\t: available keys - {1}'.format(ipv4, ', '.join(ip_data.keys())))
-
-
-        '''
-        try:
-            city_data = ip_data['city']
-            # Extract dict from list if needed
-            if type(city_data) == list: city_data = city_data[0]
-            loc_parts.append(city_data['names']['en'])
-        except KeyError:
-            # No city data in database
-            print('{0} \t: key error - city'.format(ipv4))
-
-        try:
-            subdiv_data = ip_data['subdivisions']
-            loc_parts.append(ip_data['subdivisions']['names']['en'])
-        except KeyError:
-            # No subdivision (state) data in database
-            print('{0} \t: key error - subdivision'.format(ipv4))
-        except Exception as e:
-            print(e)
-            print(ipv4)
-            print(ip_data)
-            sys.exit(1)
-        
-        try:
-            loc_parts.append(ip_data['country']['names']['en'])
-        except KeyError:
-            # No country data in database
-            print('{0} \t: key error - country'.format(ipv4))
-        '''
-
+                #print('{0}\t: available keys - {1}'.format(ipv4, ', '.join(ip_data.keys())))
+                continue
 
         # Build loc and add to geo_locations if not already added
         loc = ', '.join(loc_parts)
