@@ -272,7 +272,7 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
                 # Handle quoted expressions that get separated by ', ' split
                 while root_ca[0] == '\"' and root_ca[-1] != '\"':
                     i += 1
-                    ', '.join(root_ca, categories[i])
+                    ', '.join([root_ca, categories[i]])
                 break
     
     except subprocess.SubprocessError:
