@@ -406,7 +406,7 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
                 loc_parts.append(cat_data['names']['en'])
             except KeyError:
                 # Data not in database
-                print('{0} \t: key error - {1}').format(ipv4, cat)
+                print('{0} \t: key error - {1}'.format(ipv4, cat))
 
 
         '''
