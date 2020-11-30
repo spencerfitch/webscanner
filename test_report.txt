@@ -1,0 +1,818 @@
+============== Full Website Scan Results ==============
+amazon.com
+	Scan Time: 1606683514.008773
+	IPv4 Addresses:
+		176.32.103.205
+		176.32.98.166
+		205.251.242.103
+	IPv6 Addresses:
+		None found
+	Web Server Software: Server
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: "VeriSign, Inc."
+	Round trip time range (ms): 25.0 to 26.0
+	Real-world locations of IPv4 addresses:
+		Ashburn, Virginia, United States
+
+asee.org
+	Scan Time: 1606683585.3363197
+	IPv4 Addresses:
+		216.185.13.131
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache/2.4.7 (Ubuntu)
+	Listening on Port 80: False
+	HTTP page redirects to HTTPS: False
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: Comodo CA Limited
+	Round trip time range (ms): 32.0 to 32.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+auditoryneuroscience.com
+	Scan Time: 1606683571.7481017
+	IPv4 Addresses:
+		144.214.26.111
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache/2.4.29 (Ubuntu)
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: False
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: Digital Signature Trust Co.
+	Round trip time range (ms): 187.0 to 187.0
+	Real-world locations of IPv4 addresses:
+		Central, Central and Western District, Hong Kong
+
+clocktab.com
+	Scan Time: 1606683569.1164544
+	IPv4 Addresses:
+		104.28.4.211
+		104.28.5.211
+		172.67.170.56
+	IPv6 Addresses:
+		2606:4700:3032::681c:5d3
+		2606:4700:3035::681c:4d3
+		2606:4700:3035::ac43:aa38
+	Web Server Software: cloudflare
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: Baltimore
+	Round trip time range (ms): 3.0 to 4.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+en.wikipedia.org
+	Scan Time: 1606683503.4364588
+	IPv4 Addresses:
+		208.80.154.224
+		91.198.174.192
+	IPv6 Addresses:
+		2620:0:861:ed1a::1
+		2620:0:862:ed1a::1
+	Web Server Software: mw1395.eqiad.wmnet
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: True
+	Supported TLS versions:
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: Digital Signature Trust Co.
+	Round trip time range (ms): 32.0 to 99.0
+	Real-world locations of IPv4 addresses:
+		United States
+		Netherlands
+
+facebook.com
+	Scan Time: 1606683511.430354
+	IPv4 Addresses:
+		157.240.1.35
+		157.240.18.35
+		157.240.195.35
+		157.240.2.35
+		185.60.216.35
+		69.171.250.35
+	IPv6 Addresses:
+		2a03:2880:f103:83:face:b00c:0:25de
+		2a03:2880:f127:283:face:b00c:0:25de
+		2a03:2880:f127:83:face:b00c:0:25de
+		2a03:2880:f129:83:face:b00c:0:25de
+		2a03:2880:f12d:83:face:b00c:0:25de
+		2a03:2880:f142:182:face:b00c:0:25de
+		2a03:2880:f1ff:83:face:b00c:0:25de
+	Web Server Software: Information not provided
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: True
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: DigiCert Inc
+	Round trip time range (ms): 2.0 to 106.0
+	Real-world locations of IPv4 addresses:
+		United States
+		Ireland
+
+fandom.com
+	Scan Time: 1606683527.5304778
+	IPv4 Addresses:
+		151.101.0.194
+		151.101.128.194
+		151.101.192.194
+		151.101.64.194
+	IPv6 Addresses:
+		None found
+	Web Server Software: Information not provided
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: GlobalSign nv-sa
+	Round trip time range (ms): 3.0 to 3.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+gradeinflation.com
+	Scan Time: 1606683589.6518693
+	IPv4 Addresses:
+		66.70.176.24
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: False
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: Digital Signature Trust Co.
+	Round trip time range (ms): 20.0 to 20.0
+	Real-world locations of IPv4 addresses:
+		Beauharnois, Quebec, Canada
+
+illinois.edu
+	Scan Time: 1606683562.8941197
+	IPv4 Addresses:
+		192.17.172.3
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache/2.2.15 (Red Hat) mod_ssl/2.2.15 OpenSSL/1.0.1e-fips
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: Comodo CA Limited
+	Round trip time range (ms): 6.0 to 6.0
+	Real-world locations of IPv4 addresses:
+		Urbana, Illinois, United States
+
+imdb.com
+	Scan Time: 1606683524.6988447
+	IPv4 Addresses:
+		52.94.225.248
+		52.94.228.167
+		52.94.237.74
+	IPv6 Addresses:
+		None found
+	Web Server Software: Server
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: True
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: "Starfield Technologies, Inc."
+	Round trip time range (ms): 25.0 to 25.0
+	Real-world locations of IPv4 addresses:
+		Ashburn, Virginia, United States
+
+instagram.com
+	Scan Time: 1606683536.7868738
+	IPv4 Addresses:
+		18.214.150.8
+		3.208.218.29
+		3.209.3.232
+		3.210.81.177
+		3.211.190.38
+		3.211.195.191
+		3.214.209.46
+		3.216.50.20
+		3.217.178.33
+		3.218.3.143
+		3.222.43.26
+		3.224.217.26
+		3.224.3.80
+		3.224.36.18
+		3.224.37.102
+		3.225.109.3
+		3.226.96.24
+		3.228.78.219
+		3.230.53.225
+		3.232.148.177
+		3.94.220.22
+		34.192.66.106
+		34.193.5.242
+		34.194.88.13
+		34.195.173.122
+		34.195.3.186
+		34.197.183.108
+		34.197.66.165
+		34.199.142.235
+		34.203.7.201
+		34.206.62.254
+		34.226.75.20
+		34.228.93.200
+		34.230.186.253
+		34.235.180.162
+		34.237.200.213
+		34.238.173.81
+		34.238.65.211
+		34.239.89.209
+		35.153.11.244
+		35.153.214.22
+		35.168.171.252
+		35.170.160.105
+		35.173.151.18
+		35.173.166.200
+		52.0.178.195
+		52.0.212.144
+		52.1.109.248
+		52.2.14.71
+		52.2.150.28
+		52.2.164.38
+		52.2.169.197
+		52.200.201.185
+		52.200.54.57
+		52.207.95.49
+		52.3.102.88
+		52.3.71.143
+		52.4.134.145
+		52.45.116.207
+		52.45.71.214
+		52.5.199.160
+		52.5.220.246
+		52.54.142.16
+		52.54.235.161
+		52.71.109.30
+		52.71.154.102
+		52.71.211.145
+		52.71.223.34
+		52.71.74.107
+		52.72.191.48
+		52.73.139.89
+		54.145.10.249
+		54.145.49.123
+		54.157.88.207
+		54.160.61.145
+		54.165.4.42
+		54.172.200.155
+		54.204.115.52
+		54.80.100.38
+		54.81.80.189
+		54.85.7.239
+	IPv6 Addresses:
+		2406:da00:ff00::12eb:5d9b
+		2406:da00:ff00::1715:f372
+		2406:da00:ff00::22c0:8ccd
+		2406:da00:ff00::22c1:5f2
+		2406:da00:ff00::22c3:ad7a
+		2406:da00:ff00::22c5:42a5
+		2406:da00:ff00::22c7:8eeb
+		2406:da00:ff00::22cb:7c9
+		2406:da00:ff00::22e2:90be
+		2406:da00:ff00::22e3:7a0b
+		2406:da00:ff00::22e3:bb12
+		2406:da00:ff00::22e6:bafd
+		2406:da00:ff00::22e7:2871
+		2406:da00:ff00::22e8:25e0
+		2406:da00:ff00::22ed:c8d5
+		2406:da00:ff00::22ee:41d3
+		2406:da00:ff00::2399:bf4
+		2406:da00:ff00::23a8:abfc
+		2406:da00:ff00::23ac:a72c
+		2406:da00:ff00::23ad:39e
+		2406:da00:ff00::23ad:9712
+		2406:da00:ff00::23ad:a6c8
+		2406:da00:ff00::23ad:a7fd
+		2406:da00:ff00::3400:d490
+		2406:da00:ff00::3401:eebd
+		2406:da00:ff00::3402:a426
+		2406:da00:ff00::3402:a9c5
+		2406:da00:ff00::3403:478f
+		2406:da00:ff00::3404:8691
+		2406:da00:ff00::3405:276f
+		2406:da00:ff00::3405:b701
+		2406:da00:ff00::3406:bf00
+		2406:da00:ff00::3407:b8b1
+		2406:da00:ff00::3407:c736
+		2406:da00:ff00::3417:834f
+		2406:da00:ff00::342d:47d6
+		2406:da00:ff00::3436:eba1
+		2406:da00:ff00::3447:d391
+		2406:da00:ff00::3449:8b59
+		2406:da00:ff00::3449:a50e
+		2406:da00:ff00::3449:e256
+		2406:da00:ff00::34ca:4a7f
+		2406:da00:ff00::34cc:be9d
+		2406:da00:ff00::3651:50bd
+		2406:da00:ff00::3652:7ad5
+		2406:da00:ff00::3652:a4f8
+		2406:da00:ff00::3653:bae1
+		2406:da00:ff00::3655:7ef
+		2406:da00:ff00::3691:317b
+		2406:da00:ff00::36a0:3d91
+		2406:da00:ff00::36a5:42a
+		2406:da00:ff00::36cc:7334
+		2406:da00:ff00::3d0:c39f
+		2406:da00:ff00::3d0:da1d
+		2406:da00:ff00::3d1:4126
+		2406:da00:ff00::3d8:3214
+		2406:da00:ff00::3d8:fd92
+		2406:da00:ff00::3d9:45ef
+		2406:da00:ff00::3da:701f
+		2406:da00:ff00::3da:a2d1
+		2406:da00:ff00::3dc:4c73
+		2406:da00:ff00::3de:2b1a
+		2406:da00:ff00::3e0:2566
+		2406:da00:ff00::3e0:d91a
+		2406:da00:ff00::3e1:6d03
+		2406:da00:ff00::3e1:f3ec
+		2406:da00:ff00::3e2:6018
+		2406:da00:ff00::3e2:633c
+		2406:da00:ff00::3e2:6f5d
+		2406:da00:ff00::3e4:4edb
+		2406:da00:ff00::3e6:35e1
+		2406:da00:ff00::3e8:94b1
+		2406:da00:ff00::3ea:43c4
+		2406:da00:ff00::6b17:1850
+	Web Server Software: Information not provided
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: True
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: DigiCert Inc
+	Round trip time range (ms): 24.0 to 26.0
+	Real-world locations of IPv4 addresses:
+		United States
+		Townsend, Delaware, United States
+		Ashburn, Virginia, United States
+		Virginia, United States
+		Elkridge, Maryland, United States
+		Brooklyn, New York, United States
+		Hollywood, Florida, United States
+		Fort Worth, Texas, United States
+
+kellogg.northwestern.edu
+	Scan Time: 1606683554.7539682
+	IPv4 Addresses:
+		165.124.147.150
+	IPv6 Addresses:
+		None found
+	Web Server Software: Microsoft-IIS/10.0
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: Comodo CA Limited
+	Round trip time range (ms): 1.0 to 1.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+kli.org
+	Scan Time: 1606683599.0829315
+	IPv4 Addresses:
+		208.97.188.67
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.2
+	Root Certificate Authority: Digital Signature Trust Co.
+	Round trip time range (ms): 23.0 to 23.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+mccormick.northwestern.edu
+	Scan Time: 1606683551.378003
+	IPv4 Addresses:
+		129.105.1.129
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache/2.4.7 (Ubuntu)
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: Comodo CA Limited
+	Round trip time range (ms): 1.0 to 1.0
+	Real-world locations of IPv4 addresses:
+		Chicago, Illinois, United States
+
+northwestern.edu
+	Scan Time: 1606683546.1018608
+	IPv4 Addresses:
+		129.105.136.48
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: COMODO CA Limited
+	Round trip time range (ms): 3.0 to 3.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+pinterest.com
+	Scan Time: 1606683529.8805547
+	IPv4 Addresses:
+		151.101.0.84
+		151.101.128.84
+		151.101.192.84
+		151.101.64.84
+	IPv6 Addresses:
+		None found
+	Web Server Software: Information not provided
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: True
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: DigiCert Inc
+	Round trip time range (ms): 3.0 to 3.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+pmichaud.com
+	Scan Time: 1606683595.7681904
+	IPv4 Addresses:
+		23.254.203.248
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: False
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: Comodo CA Limited
+	Round trip time range (ms): 31.0 to 31.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+reddit.com
+	Scan Time: 1606683520.9557734
+	IPv4 Addresses:
+		151.101.1.140
+		151.101.129.140
+		151.101.193.140
+		151.101.65.140
+	IPv6 Addresses:
+		None found
+	Web Server Software: snooserv
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: True
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: DigiCert Inc
+	Round trip time range (ms): 3.0 to 8.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+spacejam.com
+	Scan Time: 1606683592.8430424
+	IPv4 Addresses:
+		75.2.104.223
+		99.83.180.228
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache/2.4.43 () OpenSSL/1.0.2k-fips
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: True
+	Supported TLS versions:
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: GlobalSign Root CA - R3
+	Round trip time range (ms): 2.0 to 2.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+stevetarzia.com
+	Scan Time: 1606683565.5815752
+	IPv4 Addresses:
+		54.245.121.172
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache/2.2.34 (Amazon)
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: Digital Signature Trust Co.
+	Round trip time range (ms): 50.0 to 50.0
+	Real-world locations of IPv4 addresses:
+		Boardman, Oregon, United States
+
+tripadvisor.com
+	Scan Time: 1606683532.100607
+	IPv4 Addresses:
+		192.229.162.112
+		192.229.182.112
+		192.229.189.15
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: GlobalSign Root CA - R3
+	Round trip time range (ms): 2.0 to 188.0
+	Real-world locations of IPv4 addresses:
+		Texas, United States
+		London, England, United Kingdom
+		United States
+
+twitter.com
+	Scan Time: 1606683508.3810236
+	IPv4 Addresses:
+		104.244.42.1
+		104.244.42.129
+		104.244.42.193
+		104.244.42.65
+		104.244.45.65
+	IPv6 Addresses:
+		None found
+	Web Server Software: tsa_b
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: True
+	Supported TLS versions:
+		TLSv1.2
+	Root Certificate Authority: DigiCert Inc
+	Round trip time range (ms): 21.0 to 22.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+uchicago.edu
+	Scan Time: 1606683559.91209
+	IPv4 Addresses:
+		34.200.129.209
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: The USERTRUST Network
+	Round trip time range (ms): 25.0 to 25.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+users.cs.northwestern.edu
+	Scan Time: 1606683557.4231591
+	IPv4 Addresses:
+		165.124.180.20
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.2
+	Root Certificate Authority: The USERTRUST Network
+	Round trip time range (ms): 1.0 to 1.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+walmart.com
+	Scan Time: 1606683543.0231009
+	IPv4 Addresses:
+		161.170.230.170
+		161.170.232.170
+	IPv6 Addresses:
+		None found
+	Web Server Software: Information not provided
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: False
+	Supported TLS versions:
+		TLSv1.1
+		TLSv1.2
+	Root Certificate Authority: GlobalSign Root CA - R3
+	Round trip time range (ms): 25.0 to 29.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+yelp.com
+	Scan Time: 1606683517.0742881
+	IPv4 Addresses:
+		151.101.200.116
+		151.101.36.116
+		151.101.76.116
+		199.232.36.116
+		199.232.4.116
+		199.232.76.116
+		199.232.8.116
+	IPv6 Addresses:
+		None found
+	Web Server Software: Apache
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: True
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: DigiCert Inc
+	Round trip time range (ms): 3.0 to 175.0
+	Real-world locations of IPv4 addresses:
+		Ashburn, Virginia, United States
+		Amsterdam, North Holland, Netherlands
+		Central, Central and Western District, Hong Kong
+		New York, New York, United States
+		Chicago, Illinois, United States
+		Dallas, Texas, United States
+
+youtube.com
+	Scan Time: 1606683499.4513862
+	IPv4 Addresses:
+		142.250.64.110
+		142.250.74.14
+		172.217.1.46
+		172.217.13.238
+		172.217.4.78
+		172.217.5.14
+		172.217.6.110
+		172.217.9.78
+		173.194.222.136
+		173.194.222.190
+		173.194.222.91
+		173.194.222.93
+		74.125.136.136
+		74.125.136.190
+		74.125.136.91
+		74.125.136.93
+	IPv6 Addresses:
+		2607:f8b0:4004:809::200e
+		2607:f8b0:4006:81b::200e
+		2607:f8b0:4009:800::200e
+		2607:f8b0:4009:805::200e
+		2607:f8b0:4009:807::200e
+		2607:f8b0:4009:812::200e
+		2607:f8b0:4009:815::200e
+		2a00:1450:400e:809::200e
+		2a00:1450:400f:800::200e
+		2a00:1450:4010:c0b::5b
+		2a00:1450:4010:c0b::5d
+		2a00:1450:4010:c0b::88
+		2a00:1450:4010:c0b::be
+	Web Server Software: YouTube Frontend Proxy
+	Listening on Port 80: True
+	HTTP page redirects to HTTPS: True
+	HTTP Strict Transport Security enabled: True
+	Supported TLS versions:
+		TLSv1.0
+		TLSv1.1
+		TLSv1.2
+		TLSv1.3
+	Root Certificate Authority: GlobalSign Root CA - R2
+	Round trip time range (ms): 3.0 to 231.0
+	Real-world locations of IPv4 addresses:
+		United States
+
+=======================================================
+
+
+==================== Scan Analysis ====================
+           Host              Min RTT   Max RTT
+                              (ms)      (ms)  
+==============================================
+kellogg.northwestern.edu           1         1
+mccormick.northwestern.edu         1         1
+users.cs.northwestern.edu          1         1
+facebook.com                       2       106
+spacejam.com                       2         2
+tripadvisor.com                    2       188
+clocktab.com                       3         4
+fandom.com                         3         3
+northwestern.edu                   3         3
+pinterest.com                      3         3
+reddit.com                         3         8
+yelp.com                           3       175
+youtube.com                        3       231
+illinois.edu                       6         6
+gradeinflation.com                20        20
+twitter.com                       21        22
+kli.org                           23        23
+instagram.com                     24        26
+amazon.com                        25        26
+imdb.com                          25        25
+uchicago.edu                      25        25
+walmart.com                       25        29
+pmichaud.com                      31        31
+asee.org                          32        32
+en.wikipedia.org                  32        99
+stevetarzia.com                   50        50
+auditoryneuroscience.com         187       187
+
+  Root Certificate Authority     Count
+======================================
+DigiCert Inc                       6  
+Digital Signature Trust Co.        5  
+Comodo CA Limited                  5  
+GlobalSign Root CA - R3            3  
+The USERTRUST Network              2  
+GlobalSign Root CA - R2            1  
+COMODO CA Limited                  1  
+"Starfield Technologies, Inc."     1  
+GlobalSign nv-sa                   1  
+Baltimore                          1  
+"VeriSign, Inc."                   1  
+
+          Web Server Software              Count
+================================================
+Apache                                       8  
+Apache/2.4.7 (Ubuntu)                        2  
+Server                                       2  
+YouTube Frontend Proxy                       1  
+tsa_b                                        1  
+Apache/2.2.34 (Amazon)                       1  
+Apache/2.4.43 () OpenSSL/1.0.2k-fips         1  
+snooserv                                     1  
+Microsoft-IIS/10.0                           1  
+Apache/2.2.15 (Red Hat) mod_ssl/2.2.15       1  
+OpenSSL/1.0.1e-fips                             
+mw1395.eqiad.wmnet                           1  
+cloudflare                                   1  
+Apache/2.4.29 (Ubuntu)                       1  
+
+Server Feature   % Support
+==========================
+Plain HTTP        96.296  
+HTTPS Redirect    85.185  
+HSTS              37.037  
+IPv6              18.519  
