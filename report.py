@@ -14,13 +14,11 @@ import sys
 
 import json                         # parsing input_file.json
 from texttable import Texttable     # formatting output_file.txt
-import heapq                        # priority queue for RTT table
-import operator     
-
-
+import heapq                        # priorty queue for RTT table
+import operator
 
 if len(sys.argv) != 3:
-    sys.stderr.write('report.py requires 2 arguments: input_file.json and output_file.txt\n')
+    sys.stderr.write('report.py requires 2 arguments: input_file.json and output_file.txt')
     sys.exit(1)
 
 with open(sys.argv[1], 'r') as input_file:
@@ -30,190 +28,235 @@ output_file = open(sys.argv[2], 'w')
 
 
 
-# For RTT table
+output_file.write('============ Analysis of Website Scan results from {0} ============\n\n'.format(sys.argv[1]))
+
+# Table Containing: HOST | Scan Time | RTT Range | Reverse DNS Names
+gen_table = Texttable()
+gen_table.set_cols_dtype(['t', 'f', 't', 't'])
+gen_table.set_cols_align(['l', 'r', 'c', 'l'])
+gen_table.set_cols_width([20, 14, 14, 43])
+gen_table_rows = [['Website', 'Scan Time', 'Rount Trp\nTime Range', 'Reverse DNS\nNames']]
+
+# Table containing: HOST | IPv4 | IPv6 | GeoLoc
+ip_table = Texttable()
+ip_table.set_cols_dtype(['t', 't', 't', 't'])
+ip_table.set_cols_align(['l', 'l', 'l', 'l'])
+ip_table.set_cols_width([20, 15, 36, 20])
+ip_table_rows = [['Website', 'IPv4 Addresses', 'IPv6 Addresses', 'IPv4 Geolocations']]
+
+# Server Feature Table: HOST | Web Server Software | Listening HTTP | Redirect HTTPS | HSTS
+server_table = Texttable()
+server_table.set_cols_dtype(['t', 't', 't', 't', 't'])
+server_table.set_cols_align(['l', 'l', 'c', 'c', 'c'])
+server_table.set_cols_width([20, 20, 12, 12, 12])
+server_table_rows = [['Website', 'HTTP Server\nSoftware', 'Listening\nfor HTTP', 'Redirect\nto HTTPS', 'HTTP Strict\nTransport\nSecurity']]
+
+# Connection Security Table: HOST | TLS versions | Root CA
+security_table = Texttable()
+security_table.set_cols_dtype(['t', 't', 't'])
+security_table.set_cols_align(['l', 'c', 'c'])
+security_table.set_cols_valign(['m', 'm', 'm'])
+security_table.set_cols_width([28, 13, 30])
+security_table_rows = [['Website', 'Supported TLS\nVersions', 'Root Certificate\nAuthority']]
+
+
+# Values for later statistics
+host_count = 0
+
+# [insecure_htp, redirect_https, hsts, ipv6]
+flag_counts = [0,0,0,0]
+
 rtt_queue = []
 
-# For TLS version support table
-host_count = 0
+root_ca_count = {}
+server_count = {}
+
 tls_types = ['SSLv2', 'SSLv3', 'TLSv1.0', 'TLSv1.1', 'TLSv1.2', 'TLSv1.3']
 tls_counts = [0,0,0,0,0,0]
 
-# [insecure_http, redirect_https, hsts, ipv6]
-scan_counts = [0,0,0,0]
 
-# For root_ca count
-root_ca_count = {}
-
-# For web server count
-server_count = {}
-
-output_file.write('============== Full Website Scan Results ==============\n')
 
 for host in input_json.keys():
+    sys.stdout.write('Writing {0}\n'.format(host))
     host_data = input_json[host]
     host_count += 1
 
-    output_file.write(host+'\n')
-    output_file.write('\tScan Time: {0}\n'.format(host_data['scan_time']))
+    # GEN_TABLE
+    rtt_range = host_data['rtt_range']
+    heapq.heappush(rtt_queue, (rtt_range[0], (host, rtt_range[0], rtt_range[1])))
 
-    output_file.write('\tIPv4 Addresses:\n')
-    if len(host_data['ipv4_addresses']) == 0:
-        # No IPv4 found
-        output_file.write('\t\tNone found\n')
-    else:
-        # Print all found IPv6
-        for ipv4 in host_data['ipv4_addresses']:
-            output_file.write('\t\t{0}\n'.format(ipv4))
-    
-    
-    output_file.write('\tIPv6 Addresses:\n')
-    if len(host_data['ipv6_addresses']) == 0:
-        # No IPv6 found
-        output_file.write('\t\tNone found\n')
-    else:
-        scan_counts[3] += 1
-        # Print all found IPv6
-        for ipv6 in host_data['ipv6_addresses']:
-            output_file.write('\t\t{0}\n'.format(ipv6))
+    rdns_string = ''
+    for dns in host_data['rdns_names']:
+        rdns_string += '{0}\n'.format(dns)
+    rdns_string = rdns_string[:-1]
+
+    gen_table_rows.append([host, host_data['scan_time'], '{0} to {1}'.format(rtt_range[0], rtt_range[1]), rdns_string])
+
+
+    # IP_TABLE
+    ip_row = [host]
+    for cat in ['ipv4_addresses', 'ipv6_addresses', 'geo_locations']:
+        # Build string for cat and append to row
+        cat_string = ''
+        for item in host_data[cat]:
+            cat_string += '{0}\n'.format(item) if cat != 'geo_locations' else '"{0}"\n'.format(item)
+        cat_string = cat_string[:-1]
+        ip_row.append(cat_string)
+    # Flag ipv6 if we got any
+    if ip_row[2] != '': flag_counts[3] += 1
+    ip_table_rows.append(ip_row)
+
+
+    # SERVER_TABLE
+    server_row = [host]
 
     server = host_data['http_server']
-    if server: 
+    if server:
+        server_row.append(server)
         if server in server_count.keys():
             server_count[server] += 1
         else:
             server_count[server] = 1
-    else:
-        # Update server text if unable to get information
-        server = 'Information not provided'
-    output_file.write('\tWeb Server Software: {0}\n'.format(server))
 
-    insecure_http = host_data['insecure_http']
-    output_file.write('\tListening on Port 80: {0}\n'.format(insecure_http))
-    if insecure_http: scan_counts[0] += 1
+        for i, cat in enumerate(['insecure_http', 'redirect_to_https', 'hsts']):
+            flag = 'X' if host_data[cat] else ''
+            # Add flag count if flagged
+            if host_data[cat]: flag_counts[i] += 1
+            server_row.append(flag)
 
-    redirect_https = host_data['redirect_to_https']
-    if redirect_https: scan_counts[1] += 1
-    output_file.write('\tHTTP page redirects to HTTPS: {0}\n'.format(redirect_https))
+        server_table_rows.append(server_row)
 
-    hsts = host_data['hsts']
-    if hsts: scan_counts[2] += 1
-    output_file.write('\tHTTP Strict Transport Security enabled: {0}\n'.format(hsts))
 
-    output_file.write('\tSupported TLS versions:\n')
-    tls_data = host_data['tls_versions']
-    if len(tls_data) == 0:
-        # No TLS supported
-        output_file.write('\t\tNone\n')
-    else:
-        # Print all supported tls versions
-        for tls in tls_data:
-            output_file.write('\t\t{0}\n'.format(tls))
-            tls_counts[tls_types.index(tls)] += 1
+    # SECURITY_TABLE
+    tls_string = ''
+    for tls in host_data['tls_versions']:
+        tls_counts[tls_types.index(tls)] += 1
+        tls_string += '{0}\n'.format(tls)
+    tls_string = tls_string[:-1]
 
     root_ca = host_data['root_ca']
-    output_file.write('\tRoot Certificate Authority: {0}\n'.format(root_ca))
-    # Increment root_ca count
     if root_ca in root_ca_count.keys():
         root_ca_count[root_ca] += 1
     else:
         root_ca_count[root_ca] = 1
+    
+    security_table_rows.append([host, tls_string, root_ca])
 
 
-    rtt_range = host_data['rtt_range']
-    output_file.write('\tRound trip time range (ms): {0} to {1}\n'.format(rtt_range[0], rtt_range[1]))
-    heapq.heappush(rtt_queue, (rtt_range[0], (host, rtt_range[0], rtt_range[1])))
+
+output_file.write('========================================== General Scan Data ===========================================\n')
+gen_table.add_rows(gen_table_rows)
+output_file.write(gen_table.draw()+'\n\n\n\n\n\n')
+
+output_file.write('=========================================== IP Address Data ============================================\n')
+ip_table.add_rows(ip_table_rows)
+output_file.write(ip_table.draw()+'\n\n\n\n\n\n')
+
+output_file.write('=================================== Server Feature Data ====================================\n')
+server_table.add_rows(server_table_rows)
+output_file.write(server_table.draw()+'\n\n\n\n\n\n')
+
+output_file.write('=========================== Connection Security Data ============================\n')
+security_table.add_rows(security_table_rows)
+output_file.write(security_table.draw()+'\n\n\n\n\n\n')
 
 
-    geo_locations = host_data['geo_locations']
-    output_file.write('\tReal-world locations of IPv4 addresses:\n')
-    if len(geo_locations) == 0:
-        output_file.write('\t\tNone found\n')
-    else:
-        for loc in geo_locations:
-            output_file.write('\t\t{0}\n'.format(loc))
-
-
-    output_file.write('\n')
-
-output_file.write('=======================================================\n\n')
-
-
-output_file.write('\n==================== Scan Analysis ====================\n')
-
-# RTT Table
+# RTT_TABLE
 rtt_table = Texttable()
-rtt_table.set_deco(Texttable.HEADER)
+rtt_table.set_deco(Texttable.HEADER | Texttable.BORDER)
 rtt_table.set_cols_align(['l', 'r', 'r'])
-rtt_table.set_cols_valign(['m', 'm', 'm'])
 rtt_table.set_cols_dtype(['t', 'i', 'i'])
+rtt_table.set_cols_valign(['c', 'c', 'c'])
+rtt_table.set_cols_width([28, 7, 7])
 
-rtt_rows = [['Host', 'Min RTT\n(ms)', 'Max RTT\n(ms)']]
+rtt_rows = [['Website', 'Min RTT\n(ms)', 'Max RTT\n(ms)']]
 while len(rtt_queue) > 0:
     rtt_info = heapq.heappop(rtt_queue)[1]
     rtt_rows.append([rtt_info[0], rtt_info[1], rtt_info[2]])
 rtt_table.add_rows(rtt_rows)
 
-output_file.write(rtt_table.draw()+'\n\n')
+output_file.write('============== Round Trip Time Range ===============\n')
+output_file.write(rtt_table.draw()+'\n\n\n\n\n\n')
 
 
-# Root CA table
-ca_table = Texttable()
-ca_table.set_deco(Texttable.HEADER)
-ca_table.set_cols_align(['l', 'c'])
-ca_table.set_cols_valign(['m', 'm'])
-ca_table.set_cols_dtype(['t', 'i'])
+
+
+
+
+# ROOTCA_TABLE
+rootca_table = Texttable()
+rootca_table.set_deco(Texttable.HEADER | Texttable.BORDER)
+rootca_table.set_cols_align(['l', 'r', 'r'])
+rootca_table.set_cols_dtype(['t', 'i', 'f'])
+rootca_rows = [['Root Certificate Authority', 'Count', 'Percentage']]
 
 sorted_ca = sorted(root_ca_count.items(), key=operator.itemgetter(1))
 sorted_ca.reverse()
-root_rows = [['Root Certificate Authority', 'Count']]
+
 for root_ca in sorted_ca:
-    root_rows.append([root_ca[0], root_ca[1]])
-ca_table.add_rows(root_rows)
+    rootca_rows.append([root_ca[0], root_ca[1], 100*(root_ca[1]/host_count)])
+rootca_table.add_rows(rootca_rows)
 
-output_file.write(ca_table.draw()+'\n\n')
-    
+output_file.write(rootca_table.draw()+'\n\n\n\n\n\n')
 
-# Web Server Table
-server_table = Texttable()
-server_table.set_deco(Texttable.HEADER)
-server_table.set_cols_align(['l', 'c'])
-server_table.set_cols_valign(['m', 'm'])
-server_table.set_cols_dtype(['t', 'i'])
-server_table.set_cols_width([40, 5])
+
+
+
+
+
+
+
+# SERVCOUNT_TABLE
+servcount_table = Texttable()
+servcount_table.set_deco(Texttable.HEADER | Texttable.BORDER)
+servcount_table.set_cols_align(['l', 'r'])
+servcount_table.set_cols_dtype(['t', 'i'])
+servcount_rows = [['HTTP Server Software', 'Count']]
 
 sorted_server = sorted(server_count.items(), key=operator.itemgetter(1))
 sorted_server.reverse()
-server_rows = [['Web Server Software', 'Count']]
+
 for server in sorted_server:
-    server_rows.append([server[0], server[1]])
-server_table.add_rows(server_rows)
-
-output_file.write(server_table.draw()+'\n\n')
+    servcount_rows.append([server[0], server[1]])
+servcount_table.add_rows(servcount_rows)
 
 
-# Percentage table
+output_file.write(servcount_table.draw()+'\n\n\n\n\n\n')
+
+
+
+
+
+
+
+
+# PERCENT_TABLE
 percent_table = Texttable()
-percent_table.set_deco(Texttable.HEADER)
-percent_table.set_cols_align(['l', 'c'])
-percent_table.set_cols_valign(['m', 'm'])
+percent_table.set_deco(Texttable.HEADER  | Texttable.BORDER)
+percent_table.set_cols_align(['l', 'r'])
 percent_table.set_cols_dtype(['t', 'f'])
+percent_table.set_cols_width([15, 9])
 
 f_percent = lambda x: (x/host_count)*100
-percents = list(map(f_percent, scan_counts))
+
+flag_percents = list(map(f_percent, flag_counts))
+tls_percents = list(map(f_percent, tls_counts))
 percent_table.add_rows([
     ['Server Feature', '% Support'],
-    ['Plain HTTP', percents[0]],
-    ['HTTPS Redirect', percents[1]],
-    ['HSTS', percents[2]],
-    ['IPv6', percents[3]]
+    ['SSLv2', tls_percents[0]],
+    ['SSLv3', tls_percents[1]],
+    ['TLSv1.0', tls_percents[2]],
+    ['TLSv1.1', tls_percents[3]],
+    ['TLSv1.2', tls_percents[4]],
+    ['TLSv1.3', tls_percents[5]],
+    ['Plain HTTP', flag_percents[0]],
+    ['HTTPS Redirect', flag_percents[1]],
+    ['HSTS', flag_percents[2]],
+    ['IPv6', flag_percents[3]] 
 ])
 
 output_file.write(percent_table.draw()+'\n')
 
 
-
-
-output_file.close()
-
-print('exited normally')
+sys.stdout.write('exited normally')
 sys.exit(0)
