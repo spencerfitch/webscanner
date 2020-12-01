@@ -221,7 +221,8 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
 
         connection.close()
 
-    except:
+    except Exception as e:
+        sys.stdout.write('HTTP connection failed with error:\n{0}\n'.format(e))
         # Not listening for http connections
         connection.close()
         listen_http = False
