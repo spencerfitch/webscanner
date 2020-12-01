@@ -161,7 +161,7 @@ def follow_http_redirect(url: str, server: str) -> Tuple[str, bool, bool]:
 
             if response.code < 300 or response.code > 310:
                 # Redirecting stopped before HTTPS reached
-                return response.getheader('Server'), False
+                return response.getheader('Server'), False, False
             
             # Parse redirect URL
             http_type, host, path = parse_url(response.getheader('Location'))
