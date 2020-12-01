@@ -469,7 +469,7 @@ for w in websites:
     scans[w]['root_ca'] = root_ca
 
     rdns = get_dns_data(ipv4_addresses)
-    scans[w]['rdns'] = rdns
+    scans[w]['rdns_names'] = rdns
 
     rtt_range = get_rtt_range(ipv4_addresses)
     scans[w]['rtt_range'] = rtt_range
