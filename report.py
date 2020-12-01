@@ -61,7 +61,7 @@ security_table_rows = [['Website', 'Supported TLS\nVersions', 'Root Certificate\
 
 
 # Values for later statistics
-host_count = 0
+host_count = len(input_json.keys())
 
 # [insecure_htp, redirect_https, hsts, ipv6]
 flag_counts = [0,0,0,0]
@@ -79,7 +79,6 @@ tls_counts = [0,0,0,0,0,0]
 for host in input_json.keys():
     sys.stdout.write('Writing {0}\n'.format(host))
     host_data = input_json[host]
-    host_count += 1
 
     # GEN_TABLE
     rtt_range = host_data['rtt_range']
@@ -112,19 +111,21 @@ for host in input_json.keys():
 
     server = host_data['http_server']
     if server:
-        server_row.append(server)
         if server in server_count.keys():
             server_count[server] += 1
         else:
             server_count[server] = 1
+    else:
+        server = ''
+    server_row.append(server)
 
-        for i, cat in enumerate(['insecure_http', 'redirect_to_https', 'hsts']):
-            flag = 'X' if host_data[cat] else ''
-            # Add flag count if flagged
-            if host_data[cat]: flag_counts[i] += 1
-            server_row.append(flag)
+    for i, cat in enumerate(['insecure_http', 'redirect_to_https', 'hsts']):
+        flag = 'X' if host_data[cat] else ''
+        # Add flag count if flagged
+        if host_data[cat]: flag_counts[i] += 1
+        server_row.append(flag)
 
-        server_table_rows.append(server_row)
+    server_table_rows.append(server_row)
 
 
     # SECURITY_TABLE
@@ -258,5 +259,5 @@ percent_table.add_rows([
 output_file.write(percent_table.draw()+'\n')
 
 
-sys.stdout.write('exited normally')
+sys.stdout.write('exited normally\n')
 sys.exit(0)
