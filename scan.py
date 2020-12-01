@@ -12,7 +12,9 @@
 
 # TODO
 #   - Ask about hsts (should we only base it on redirects or should we try https connection too)
-#
+#   - Verify where I'm getting hsts and server data from
+#   - Update TLS scan to use nmap for everything but tls1.3 (to check for lower ssl)
+#   - Insecure HTTP should be 100%
 
 import sys
 from typing import List, Tuple
@@ -195,7 +197,7 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
 
     try:
         # Establish connection
-        connection = http.client.HTTPConnection(website, timeout=2)
+        connection = http.client.HTTPConnection(website, timeout=10)
 
         # Make GET request
         head = {'Host': website}
@@ -358,10 +360,10 @@ def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
         try:
             # Measure rtt from commandline
             result = subprocess.check_output(["sh", "-c", "time echo -e '\x1dclose\x0d' | telnet {0} 443".format(ipv4)], 
-                                             timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
+                                             timeout=3, stderr=subprocess.STDOUT).decode('utf-8')
         except subprocess.SubprocessError:
             # Failed to get rtt -> try next ipv4
-            print('Failed to get rtt')
+            sys.stdout.write('Failed to connect to {0} to measure RTT\n'.format(ipv4))
             continue
             
 
@@ -375,7 +377,7 @@ def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
                 break
     
     if rtt_range == [float('inf'), 0]:
-        print('I sure hope you never see this')
+        sys.stdout.write('Failed to make any connections to measure RTT of IPv4 addresses:\n{0}\n'.format(ipv4_addresses))
 
     return rtt_range
             
@@ -411,8 +413,8 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
                 loc_parts.append(cat_data['names']['en'])
             except KeyError:
                 # Data not in database
-                print('{0}\t: key error - {1}'.format(ipv4, cat))
-                #print('{0}\t: available keys - {1}'.format(ipv4, ', '.join(ip_data.keys())))
+                #sys.stdout.write('{0}\t: key error - {1}'.format(ipv4, cat))
+                #sys.stdout.write('{0}\t: available keys - {1}'.format(ipv4, ', '.join(ip_data.keys())))
                 continue
 
         # Build loc and add to geo_locations if not already added
@@ -445,6 +447,8 @@ with open(sys.argv[1], "r") as input_file:
 # Run scans
 scans = {}
 for w in websites:
+    sys.stdout.write('Scanning {0}\n'.format(w))
+
     scans[w] = {
         "scan_time": time.time(),
         "ipv4_addresses": get_ip_addresses(w, 'ipv4'),
