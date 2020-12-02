@@ -26,7 +26,8 @@ dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9'
                  '64.6.65.6', '185.228.168.168', 
                  '77.88.8.7', '156.154.70.1', '198.101.242.72', '176.103.130.130']
                  
-global https_failed = False
+global https_failed
+https_failed = False
 
 def get_ip_addresses(website: str, ip_type: str) -> List[str]:
     ''' 
