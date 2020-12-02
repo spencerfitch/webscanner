@@ -167,10 +167,13 @@ for host in input_json.keys():
     tls_string = tls_string[:-1]
 
     root_ca = host_data['root_ca']
-    if root_ca in root_ca_count.keys():
-        root_ca_count[root_ca] += 1
+    if root_ca: 
+        if root_ca in root_ca_count.keys():
+            root_ca_count[root_ca] += 1
+        else:
+            root_ca_count[root_ca] = 1
     else:
-        root_ca_count[root_ca] = 1
+        root_ca = ''
     
     security_table_rows.append([host, tls_string, root_ca])
 
