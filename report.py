@@ -27,33 +27,38 @@ with open(sys.argv[1], 'r') as input_file:
 output_file = open(sys.argv[2], 'w')
 
 
-# Dynamically size title to match table width
-title_string = ' Report of website scan results from {0} '.format(sys.argv[1])
-width_diff = 104 - len(title_string)
-left_char = width_diff // 2
-right_char = width_diff - left_char
+# Dynamically size title to match desired table width
+def pad_title(width: int, title_string: str) -> str:
+    width_diff = width - len(title_string)
+    if width_diff <= 0:
+        return title_string
 
-left_string = ''
-for i in range(left_char):
-    left_string += '='
-right_string = ''
-for i in range(right_char):
-    right_string += '='
+    left_width = width_diff // 2
+    right_width = width_diff - left_width
 
-full_title = left_string + title_string + right_string + '\n\n'
+    left_string = ''
+    for i in range(left_width):
+        left_string += '='
+    right_string = ''
+    for i in range(right_width):
+        right_string += '='
+    
+    return left_string + title_string + right_string
 
-output_file.write(full_title)
+
+
+title_string = pad_title(104, ' Report of website scan results from {0} '.format(sys.argv[1]))
+output_file.write('{0}\n\n'.format(title_string))
+
 table_of_contents = '== Table Guide ==\n' + \
                     '\t1: General Scan Data          - Scan Time, RTT Range, and RDNS Names\n' + \
                     '\t2: IP Address Data            - IPv4 Addresses, IPv6 Addresses, and IPv4 Geolocations)\n' + \
                     '\t3: Server Feature Data        - HTTP Server Software, Listening for HTTP, Redirect to HTTPS, and HSTS\n' + \
                     '\t4: Connection Security Data   - TLS Versions, and Root Certificate Authority\n' + \
                     '\t5: Round Trip Time Range      - List of RTT for all websites sorted by the minimum\n' + \
-                    '\t6: Root CA Popularity         - List of all Root CAs ordered by their popularity\n' + \
-                    '\t7: Server Software Popularity - List of all Server Software ordered by popularity\n' + \
+                    '\t6: Root CA Frequency          - List of all Root CAs ordered by the number of occurences\n' + \
+                    '\t7: Server Software Frequency  - List of all Server Software ordered by the number of occurences\n' + \
                     '\t8: Server Feature Support     - List of percent support for various server features\n\n\n\n'
-
-
 output_file.write(table_of_contents)
 
 # Table Containing: HOST | Scan Time | RTT Range | Reverse DNS Names
@@ -225,6 +230,8 @@ for root_ca in sorted_ca:
     rootca_rows.append([root_ca[0], root_ca[1], 100*(root_ca[1]/host_count)])
 rootca_table.add_rows(rootca_rows)
 
+rootca_title = pad_title(len((rootca_table.draw()).split('\n')[0]), ' Root CA Frequency ')
+output_file.write('{0}\n'.format(rootca_title))
 output_file.write(rootca_table.draw()+'\n\n\n\n\n\n')
 
 
@@ -250,6 +257,8 @@ for server in sorted_server:
 servcount_table.add_rows(servcount_rows)
 
 
+servcount_title = pad_title(len((servcount_table.draw()).split('\n')[0]), ' Server Software Frequency ')
+output_file.write('{0}\n'.format(servcount_title))
 output_file.write(servcount_table.draw()+'\n\n\n\n\n\n')
 
 
@@ -284,6 +293,9 @@ percent_table.add_rows([
     ['IPv6', flag_percents[3]] 
 ])
 
+
+percent_title = pad_title(len((percent_table.draw()).split('\n')[0]), ' Server Feature Support ')
+output_file.write('{0}\n'.format(percent_title))
 output_file.write(percent_table.draw()+'\n')
 
 
