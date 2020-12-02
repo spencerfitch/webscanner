@@ -115,6 +115,7 @@ def get_https_data(host: str, path: str) -> Tuple[str, bool]:
 
     except:
         # HTTPS connection failed?
+        global https_failed
         https_failed = True
         print('HTTPS connection failed for : ' + host)
         return None, False
