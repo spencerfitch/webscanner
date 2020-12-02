@@ -1,818 +1,660 @@
-============== Full Website Scan Results ==============
-amazon.com
-	Scan Time: 1606683514.008773
-	IPv4 Addresses:
-		176.32.103.205
-		176.32.98.166
-		205.251.242.103
-	IPv6 Addresses:
-		None found
-	Web Server Software: Server
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: "VeriSign, Inc."
-	Round trip time range (ms): 25.0 to 26.0
-	Real-world locations of IPv4 addresses:
-		Ashburn, Virginia, United States
+========================== Report of website scan results from test_out.json ===========================
 
-asee.org
-	Scan Time: 1606683585.3363197
-	IPv4 Addresses:
-		216.185.13.131
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache/2.4.7 (Ubuntu)
-	Listening on Port 80: False
-	HTTP page redirects to HTTPS: False
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: Comodo CA Limited
-	Round trip time range (ms): 32.0 to 32.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-auditoryneuroscience.com
-	Scan Time: 1606683571.7481017
-	IPv4 Addresses:
-		144.214.26.111
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache/2.4.29 (Ubuntu)
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: False
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: Digital Signature Trust Co.
-	Round trip time range (ms): 187.0 to 187.0
-	Real-world locations of IPv4 addresses:
-		Central, Central and Western District, Hong Kong
-
-clocktab.com
-	Scan Time: 1606683569.1164544
-	IPv4 Addresses:
-		104.28.4.211
-		104.28.5.211
-		172.67.170.56
-	IPv6 Addresses:
-		2606:4700:3032::681c:5d3
-		2606:4700:3035::681c:4d3
-		2606:4700:3035::ac43:aa38
-	Web Server Software: cloudflare
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: Baltimore
-	Round trip time range (ms): 3.0 to 4.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-en.wikipedia.org
-	Scan Time: 1606683503.4364588
-	IPv4 Addresses:
-		208.80.154.224
-		91.198.174.192
-	IPv6 Addresses:
-		2620:0:861:ed1a::1
-		2620:0:862:ed1a::1
-	Web Server Software: mw1395.eqiad.wmnet
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: True
-	Supported TLS versions:
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: Digital Signature Trust Co.
-	Round trip time range (ms): 32.0 to 99.0
-	Real-world locations of IPv4 addresses:
-		United States
-		Netherlands
-
-facebook.com
-	Scan Time: 1606683511.430354
-	IPv4 Addresses:
-		157.240.1.35
-		157.240.18.35
-		157.240.195.35
-		157.240.2.35
-		185.60.216.35
-		69.171.250.35
-	IPv6 Addresses:
-		2a03:2880:f103:83:face:b00c:0:25de
-		2a03:2880:f127:283:face:b00c:0:25de
-		2a03:2880:f127:83:face:b00c:0:25de
-		2a03:2880:f129:83:face:b00c:0:25de
-		2a03:2880:f12d:83:face:b00c:0:25de
-		2a03:2880:f142:182:face:b00c:0:25de
-		2a03:2880:f1ff:83:face:b00c:0:25de
-	Web Server Software: Information not provided
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: True
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: DigiCert Inc
-	Round trip time range (ms): 2.0 to 106.0
-	Real-world locations of IPv4 addresses:
-		United States
-		Ireland
-
-fandom.com
-	Scan Time: 1606683527.5304778
-	IPv4 Addresses:
-		151.101.0.194
-		151.101.128.194
-		151.101.192.194
-		151.101.64.194
-	IPv6 Addresses:
-		None found
-	Web Server Software: Information not provided
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: GlobalSign nv-sa
-	Round trip time range (ms): 3.0 to 3.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-gradeinflation.com
-	Scan Time: 1606683589.6518693
-	IPv4 Addresses:
-		66.70.176.24
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: False
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: Digital Signature Trust Co.
-	Round trip time range (ms): 20.0 to 20.0
-	Real-world locations of IPv4 addresses:
-		Beauharnois, Quebec, Canada
-
-illinois.edu
-	Scan Time: 1606683562.8941197
-	IPv4 Addresses:
-		192.17.172.3
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache/2.2.15 (Red Hat) mod_ssl/2.2.15 OpenSSL/1.0.1e-fips
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: Comodo CA Limited
-	Round trip time range (ms): 6.0 to 6.0
-	Real-world locations of IPv4 addresses:
-		Urbana, Illinois, United States
-
-imdb.com
-	Scan Time: 1606683524.6988447
-	IPv4 Addresses:
-		52.94.225.248
-		52.94.228.167
-		52.94.237.74
-	IPv6 Addresses:
-		None found
-	Web Server Software: Server
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: True
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: "Starfield Technologies, Inc."
-	Round trip time range (ms): 25.0 to 25.0
-	Real-world locations of IPv4 addresses:
-		Ashburn, Virginia, United States
-
-instagram.com
-	Scan Time: 1606683536.7868738
-	IPv4 Addresses:
-		18.214.150.8
-		3.208.218.29
-		3.209.3.232
-		3.210.81.177
-		3.211.190.38
-		3.211.195.191
-		3.214.209.46
-		3.216.50.20
-		3.217.178.33
-		3.218.3.143
-		3.222.43.26
-		3.224.217.26
-		3.224.3.80
-		3.224.36.18
-		3.224.37.102
-		3.225.109.3
-		3.226.96.24
-		3.228.78.219
-		3.230.53.225
-		3.232.148.177
-		3.94.220.22
-		34.192.66.106
-		34.193.5.242
-		34.194.88.13
-		34.195.173.122
-		34.195.3.186
-		34.197.183.108
-		34.197.66.165
-		34.199.142.235
-		34.203.7.201
-		34.206.62.254
-		34.226.75.20
-		34.228.93.200
-		34.230.186.253
-		34.235.180.162
-		34.237.200.213
-		34.238.173.81
-		34.238.65.211
-		34.239.89.209
-		35.153.11.244
-		35.153.214.22
-		35.168.171.252
-		35.170.160.105
-		35.173.151.18
-		35.173.166.200
-		52.0.178.195
-		52.0.212.144
-		52.1.109.248
-		52.2.14.71
-		52.2.150.28
-		52.2.164.38
-		52.2.169.197
-		52.200.201.185
-		52.200.54.57
-		52.207.95.49
-		52.3.102.88
-		52.3.71.143
-		52.4.134.145
-		52.45.116.207
-		52.45.71.214
-		52.5.199.160
-		52.5.220.246
-		52.54.142.16
-		52.54.235.161
-		52.71.109.30
-		52.71.154.102
-		52.71.211.145
-		52.71.223.34
-		52.71.74.107
-		52.72.191.48
-		52.73.139.89
-		54.145.10.249
-		54.145.49.123
-		54.157.88.207
-		54.160.61.145
-		54.165.4.42
-		54.172.200.155
-		54.204.115.52
-		54.80.100.38
-		54.81.80.189
-		54.85.7.239
-	IPv6 Addresses:
-		2406:da00:ff00::12eb:5d9b
-		2406:da00:ff00::1715:f372
-		2406:da00:ff00::22c0:8ccd
-		2406:da00:ff00::22c1:5f2
-		2406:da00:ff00::22c3:ad7a
-		2406:da00:ff00::22c5:42a5
-		2406:da00:ff00::22c7:8eeb
-		2406:da00:ff00::22cb:7c9
-		2406:da00:ff00::22e2:90be
-		2406:da00:ff00::22e3:7a0b
-		2406:da00:ff00::22e3:bb12
-		2406:da00:ff00::22e6:bafd
-		2406:da00:ff00::22e7:2871
-		2406:da00:ff00::22e8:25e0
-		2406:da00:ff00::22ed:c8d5
-		2406:da00:ff00::22ee:41d3
-		2406:da00:ff00::2399:bf4
-		2406:da00:ff00::23a8:abfc
-		2406:da00:ff00::23ac:a72c
-		2406:da00:ff00::23ad:39e
-		2406:da00:ff00::23ad:9712
-		2406:da00:ff00::23ad:a6c8
-		2406:da00:ff00::23ad:a7fd
-		2406:da00:ff00::3400:d490
-		2406:da00:ff00::3401:eebd
-		2406:da00:ff00::3402:a426
-		2406:da00:ff00::3402:a9c5
-		2406:da00:ff00::3403:478f
-		2406:da00:ff00::3404:8691
-		2406:da00:ff00::3405:276f
-		2406:da00:ff00::3405:b701
-		2406:da00:ff00::3406:bf00
-		2406:da00:ff00::3407:b8b1
-		2406:da00:ff00::3407:c736
-		2406:da00:ff00::3417:834f
-		2406:da00:ff00::342d:47d6
-		2406:da00:ff00::3436:eba1
-		2406:da00:ff00::3447:d391
-		2406:da00:ff00::3449:8b59
-		2406:da00:ff00::3449:a50e
-		2406:da00:ff00::3449:e256
-		2406:da00:ff00::34ca:4a7f
-		2406:da00:ff00::34cc:be9d
-		2406:da00:ff00::3651:50bd
-		2406:da00:ff00::3652:7ad5
-		2406:da00:ff00::3652:a4f8
-		2406:da00:ff00::3653:bae1
-		2406:da00:ff00::3655:7ef
-		2406:da00:ff00::3691:317b
-		2406:da00:ff00::36a0:3d91
-		2406:da00:ff00::36a5:42a
-		2406:da00:ff00::36cc:7334
-		2406:da00:ff00::3d0:c39f
-		2406:da00:ff00::3d0:da1d
-		2406:da00:ff00::3d1:4126
-		2406:da00:ff00::3d8:3214
-		2406:da00:ff00::3d8:fd92
-		2406:da00:ff00::3d9:45ef
-		2406:da00:ff00::3da:701f
-		2406:da00:ff00::3da:a2d1
-		2406:da00:ff00::3dc:4c73
-		2406:da00:ff00::3de:2b1a
-		2406:da00:ff00::3e0:2566
-		2406:da00:ff00::3e0:d91a
-		2406:da00:ff00::3e1:6d03
-		2406:da00:ff00::3e1:f3ec
-		2406:da00:ff00::3e2:6018
-		2406:da00:ff00::3e2:633c
-		2406:da00:ff00::3e2:6f5d
-		2406:da00:ff00::3e4:4edb
-		2406:da00:ff00::3e6:35e1
-		2406:da00:ff00::3e8:94b1
-		2406:da00:ff00::3ea:43c4
-		2406:da00:ff00::6b17:1850
-	Web Server Software: Information not provided
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: True
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: DigiCert Inc
-	Round trip time range (ms): 24.0 to 26.0
-	Real-world locations of IPv4 addresses:
-		United States
-		Townsend, Delaware, United States
-		Ashburn, Virginia, United States
-		Virginia, United States
-		Elkridge, Maryland, United States
-		Brooklyn, New York, United States
-		Hollywood, Florida, United States
-		Fort Worth, Texas, United States
-
-kellogg.northwestern.edu
-	Scan Time: 1606683554.7539682
-	IPv4 Addresses:
-		165.124.147.150
-	IPv6 Addresses:
-		None found
-	Web Server Software: Microsoft-IIS/10.0
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: Comodo CA Limited
-	Round trip time range (ms): 1.0 to 1.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-kli.org
-	Scan Time: 1606683599.0829315
-	IPv4 Addresses:
-		208.97.188.67
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.2
-	Root Certificate Authority: Digital Signature Trust Co.
-	Round trip time range (ms): 23.0 to 23.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-mccormick.northwestern.edu
-	Scan Time: 1606683551.378003
-	IPv4 Addresses:
-		129.105.1.129
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache/2.4.7 (Ubuntu)
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: Comodo CA Limited
-	Round trip time range (ms): 1.0 to 1.0
-	Real-world locations of IPv4 addresses:
-		Chicago, Illinois, United States
-
-northwestern.edu
-	Scan Time: 1606683546.1018608
-	IPv4 Addresses:
-		129.105.136.48
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: COMODO CA Limited
-	Round trip time range (ms): 3.0 to 3.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-pinterest.com
-	Scan Time: 1606683529.8805547
-	IPv4 Addresses:
-		151.101.0.84
-		151.101.128.84
-		151.101.192.84
-		151.101.64.84
-	IPv6 Addresses:
-		None found
-	Web Server Software: Information not provided
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: True
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: DigiCert Inc
-	Round trip time range (ms): 3.0 to 3.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-pmichaud.com
-	Scan Time: 1606683595.7681904
-	IPv4 Addresses:
-		23.254.203.248
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: False
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: Comodo CA Limited
-	Round trip time range (ms): 31.0 to 31.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-reddit.com
-	Scan Time: 1606683520.9557734
-	IPv4 Addresses:
-		151.101.1.140
-		151.101.129.140
-		151.101.193.140
-		151.101.65.140
-	IPv6 Addresses:
-		None found
-	Web Server Software: snooserv
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: True
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: DigiCert Inc
-	Round trip time range (ms): 3.0 to 8.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-spacejam.com
-	Scan Time: 1606683592.8430424
-	IPv4 Addresses:
-		75.2.104.223
-		99.83.180.228
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache/2.4.43 () OpenSSL/1.0.2k-fips
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: True
-	Supported TLS versions:
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: GlobalSign Root CA - R3
-	Round trip time range (ms): 2.0 to 2.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-stevetarzia.com
-	Scan Time: 1606683565.5815752
-	IPv4 Addresses:
-		54.245.121.172
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache/2.2.34 (Amazon)
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: Digital Signature Trust Co.
-	Round trip time range (ms): 50.0 to 50.0
-	Real-world locations of IPv4 addresses:
-		Boardman, Oregon, United States
-
-tripadvisor.com
-	Scan Time: 1606683532.100607
-	IPv4 Addresses:
-		192.229.162.112
-		192.229.182.112
-		192.229.189.15
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: GlobalSign Root CA - R3
-	Round trip time range (ms): 2.0 to 188.0
-	Real-world locations of IPv4 addresses:
-		Texas, United States
-		London, England, United Kingdom
-		United States
-
-twitter.com
-	Scan Time: 1606683508.3810236
-	IPv4 Addresses:
-		104.244.42.1
-		104.244.42.129
-		104.244.42.193
-		104.244.42.65
-		104.244.45.65
-	IPv6 Addresses:
-		None found
-	Web Server Software: tsa_b
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: True
-	Supported TLS versions:
-		TLSv1.2
-	Root Certificate Authority: DigiCert Inc
-	Round trip time range (ms): 21.0 to 22.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-uchicago.edu
-	Scan Time: 1606683559.91209
-	IPv4 Addresses:
-		34.200.129.209
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: The USERTRUST Network
-	Round trip time range (ms): 25.0 to 25.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-users.cs.northwestern.edu
-	Scan Time: 1606683557.4231591
-	IPv4 Addresses:
-		165.124.180.20
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.2
-	Root Certificate Authority: The USERTRUST Network
-	Round trip time range (ms): 1.0 to 1.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-walmart.com
-	Scan Time: 1606683543.0231009
-	IPv4 Addresses:
-		161.170.230.170
-		161.170.232.170
-	IPv6 Addresses:
-		None found
-	Web Server Software: Information not provided
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: False
-	Supported TLS versions:
-		TLSv1.1
-		TLSv1.2
-	Root Certificate Authority: GlobalSign Root CA - R3
-	Round trip time range (ms): 25.0 to 29.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-yelp.com
-	Scan Time: 1606683517.0742881
-	IPv4 Addresses:
-		151.101.200.116
-		151.101.36.116
-		151.101.76.116
-		199.232.36.116
-		199.232.4.116
-		199.232.76.116
-		199.232.8.116
-	IPv6 Addresses:
-		None found
-	Web Server Software: Apache
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: True
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: DigiCert Inc
-	Round trip time range (ms): 3.0 to 175.0
-	Real-world locations of IPv4 addresses:
-		Ashburn, Virginia, United States
-		Amsterdam, North Holland, Netherlands
-		Central, Central and Western District, Hong Kong
-		New York, New York, United States
-		Chicago, Illinois, United States
-		Dallas, Texas, United States
-
-youtube.com
-	Scan Time: 1606683499.4513862
-	IPv4 Addresses:
-		142.250.64.110
-		142.250.74.14
-		172.217.1.46
-		172.217.13.238
-		172.217.4.78
-		172.217.5.14
-		172.217.6.110
-		172.217.9.78
-		173.194.222.136
-		173.194.222.190
-		173.194.222.91
-		173.194.222.93
-		74.125.136.136
-		74.125.136.190
-		74.125.136.91
-		74.125.136.93
-	IPv6 Addresses:
-		2607:f8b0:4004:809::200e
-		2607:f8b0:4006:81b::200e
-		2607:f8b0:4009:800::200e
-		2607:f8b0:4009:805::200e
-		2607:f8b0:4009:807::200e
-		2607:f8b0:4009:812::200e
-		2607:f8b0:4009:815::200e
-		2a00:1450:400e:809::200e
-		2a00:1450:400f:800::200e
-		2a00:1450:4010:c0b::5b
-		2a00:1450:4010:c0b::5d
-		2a00:1450:4010:c0b::88
-		2a00:1450:4010:c0b::be
-	Web Server Software: YouTube Frontend Proxy
-	Listening on Port 80: True
-	HTTP page redirects to HTTPS: True
-	HTTP Strict Transport Security enabled: True
-	Supported TLS versions:
-		TLSv1.0
-		TLSv1.1
-		TLSv1.2
-		TLSv1.3
-	Root Certificate Authority: GlobalSign Root CA - R2
-	Round trip time range (ms): 3.0 to 231.0
-	Real-world locations of IPv4 addresses:
-		United States
-
-=======================================================
+== Table Guide ==
+	1: General Scan Data          - Scan Time, RTT Range, and RDNS Names
+	2: IP Address Data            - IPv4 Addresses, IPv6 Addresses, and IPv4 Geolocations)
+	3: Server Feature Data        - HTTP Server Software, Listening for HTTP, Redirect to HTTPS, and HSTS
+	4: Connection Security Data   - TLS Versions, and Root Certificate Authority
+	5: Round Trip Time Range      - List of RTT for all websites sorted by the minimum
+	6: Root CA Frequency          - List of all Root CAs ordered by the number of occurences
+	7: Server Software Frequency  - List of all Server Software ordered by the number of occurences
+	8: Server Feature Support     - List of percent support for various server features
 
 
-==================== Scan Analysis ====================
-           Host              Min RTT   Max RTT
-                              (ms)      (ms)  
-==============================================
-kellogg.northwestern.edu           1         1
-mccormick.northwestern.edu         1         1
-users.cs.northwestern.edu          1         1
-facebook.com                       2       106
-spacejam.com                       2         2
-tripadvisor.com                    2       188
-clocktab.com                       3         4
-fandom.com                         3         3
-northwestern.edu                   3         3
-pinterest.com                      3         3
-reddit.com                         3         8
-yelp.com                           3       175
-youtube.com                        3       231
-illinois.edu                       6         6
-gradeinflation.com                20        20
-twitter.com                       21        22
-kli.org                           23        23
-instagram.com                     24        26
-amazon.com                        25        26
-imdb.com                          25        25
-uchicago.edu                      25        25
-walmart.com                       25        29
-pmichaud.com                      31        31
-asee.org                          32        32
-en.wikipedia.org                  32        99
-stevetarzia.com                   50        50
-auditoryneuroscience.com         187       187
 
-  Root Certificate Authority     Count
-======================================
-DigiCert Inc                       6  
-Digital Signature Trust Co.        5  
-Comodo CA Limited                  5  
-GlobalSign Root CA - R3            3  
-The USERTRUST Network              2  
-GlobalSign Root CA - R2            1  
-COMODO CA Limited                  1  
-"Starfield Technologies, Inc."     1  
-GlobalSign nv-sa                   1  
-Baltimore                          1  
-"VeriSign, Inc."                   1  
+========================================== General Scan Data ===========================================
++----------------------+----------------+----------------+---------------------------------------------+
+|       Website        |   Scan Time    |   Rount Trip   |                 Reverse DNS                 |
+|                      |                |   Time Range   |                    Names                    |
++======================+================+================+=============================================+
+| amazon.com           | 1606883769.140 |  25.0 to 25.0  | s3-console-us-                              |
+|                      |                |                | standard.console.aws.amazon.com.            |
++----------------------+----------------+----------------+---------------------------------------------+
+| asee.org             | 1606883841.739 |  32.0 to 32.0  | 216-185-13-131.i95.net.                     |
++----------------------+----------------+----------------+---------------------------------------------+
+| auditoryneuroscience | 1606883824.152 | 183.0 to 183.0 | twinkle.bms.cityu.edu.hk.                   |
+| .com                 |                |                |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| clocktab.com         | 1606883822.789 |   3.0 to 4.0   |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| en.wikipedia.org     | 1606883757.821 | 26.0 to 107.0  | text-lb.codfw.wikimedia.org.                |
+|                      |                |                | text-lb.eqiad.wikimedia.org.                |
+|                      |                |                | text-lb.esams.wikimedia.org.                |
++----------------------+----------------+----------------+---------------------------------------------+
+| facebook.com         | 1606883763.600 |  2.0 to 103.0  | edge-star-mini-shv-02-ort2.facebook.com.    |
+|                      |                |                | edge-star-mini-shv-01-mrs2.facebook.com.    |
+|                      |                |                | edge-star-mini-shv-01-ort2.facebook.com.    |
+|                      |                |                | edge-star-mini-shv-01-lhr8.facebook.com.    |
+|                      |                |                | edge-star-mini-shv-01-any2.facebook.com.    |
++----------------------+----------------+----------------+---------------------------------------------+
+| fandom.com           | 1606883778.918 |   2.0 to 3.0   |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| gradeinflation.com   | 1606883846.841 |  20.0 to 20.0  | ahs4.r4l.com.                               |
++----------------------+----------------+----------------+---------------------------------------------+
+| illinois.edu         | 1606883810.100 |   6.0 to 6.0   | tardis.techservices.illinois.edu.           |
++----------------------+----------------+----------------+---------------------------------------------+
+| imdb.com             | 1606883776.243 |  24.0 to 25.0  |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| instagram.com        | 1606883788.372 |  24.0 to 26.0  | ec2-107-23-24-80.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-18-213-160-131.compute-1.amazonaws.com. |
+|                      |                |                | ec2-18-235-93-155.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-3-208-195-159.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-3-208-232-245.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-3-208-236-94.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-3-209-176-245.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-3-210-196-55.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-3-212-211-9.compute-1.amazonaws.com.    |
+|                      |                |                | ec2-3-212-83-203.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-3-214-214-171.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-3-214-242-45.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-3-216-253-146.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-3-217-178-33.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-3-219-90-152.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-3-222-43-26.compute-1.amazonaws.com.    |
+|                      |                |                | ec2-3-223-111-137.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-3-224-133-228.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-3-224-37-102.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-3-226-111-93.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-3-226-96-24.compute-1.amazonaws.com.    |
+|                      |                |                | ec2-3-232-148-177.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-3-94-220-22.compute-1.amazonaws.com.    |
+|                      |                |                | ec2-34-192-66-106.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-34-193-5-242.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-34-194-88-13.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-34-195-173-122.compute-1.amazonaws.com. |
+|                      |                |                | ec2-34-199-240-222.compute-1.amazonaws.com. |
+|                      |                |                | ec2-34-200-35-57.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-34-206-33-202.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-34-227-133-179.compute-1.amazonaws.com. |
+|                      |                |                | ec2-34-227-187-18.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-34-231-40-113.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-34-232-174-143.compute-1.amazonaws.com. |
+|                      |                |                | ec2-34-237-200-213.compute-1.amazonaws.com. |
+|                      |                |                | ec2-34-238-173-81.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-34-238-65-211.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-34-239-18-154.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-35-168-171-252.compute-1.amazonaws.com. |
+|                      |                |                | ec2-35-168-53-47.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-35-171-109-191.compute-1.amazonaws.com. |
+|                      |                |                | ec2-35-172-167-44.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-35-173-151-18.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-35-173-3-158.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-0-38-13.compute-1.amazonaws.com.     |
+|                      |                |                | ec2-52-1-109-248.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-1-238-189.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-2-26-142.compute-1.amazonaws.com.    |
+|                      |                |                | ec2-52-200-156-99.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-52-200-54-57.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-201-106-96.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-52-202-10-202.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-52-202-71-204.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-52-204-190-157.compute-1.amazonaws.com. |
+|                      |                |                | ec2-52-207-95-49.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-22-200-157.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-52-23-94-118.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-4-134-145.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-45-71-214.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-5-220-246.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-5-39-111.compute-1.amazonaws.com.    |
+|                      |                |                | ec2-52-7-199-54.compute-1.amazonaws.com.    |
+|                      |                |                | ec2-52-71-109-30.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-71-167-163.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-52-71-211-145.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-52-72-191-48.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-72-197-223.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-52-73-139-89.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-52-73-226-86.compute-1.amazonaws.com.   |
+|                      |                |                | ec2-54-157-88-207.compute-1.amazonaws.com.  |
+|                      |                |                | ec2-54-165-214-173.compute-1.amazonaws.com. |
+|                      |                |                | ec2-54-172-200-155.compute-1.amazonaws.com. |
+|                      |                |                | ec2-54-80-223-0.compute-1.amazonaws.com.    |
++----------------------+----------------+----------------+---------------------------------------------+
+| kellogg.northwestern | 1606883803.633 |   1.0 to 1.0   | kellogg.northwestern.edu.                   |
+| .edu                 |                |                | kelloggalumni.kellogg.northwestern.edu.     |
++----------------------+----------------+----------------+---------------------------------------------+
+| kli.org              | 1606883860.047 |  23.0 to 23.0  | ps506619.dreamhostps.com.                   |
++----------------------+----------------+----------------+---------------------------------------------+
+| mccormick.northweste | 1606883801.664 |   1.0 to 1.0   |                                             |
+| rn.edu               |                |                |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| northwestern.edu     | 1606883799.934 |   3.0 to 3.0   | evcommon-caesar-vip.northwestern.edu.       |
+|                      |                |                | cnair.northwestern.edu.                     |
++----------------------+----------------+----------------+---------------------------------------------+
+| pinterest.com        | 1606883784.062 |   2.0 to 3.0   |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| pmichaud.com         | 1606883856.334 |  31.0 to 31.0  | hwsrv-233708.hostwindsdns.com.              |
++----------------------+----------------+----------------+---------------------------------------------+
+| reddit.com           | 1606883773.993 |   2.0 to 2.0   |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| spacejam.com         | 1606883852.914 |   2.0 to 2.0   | a259cf76d74e1f65f.awsglobalaccelerator.com. |
++----------------------+----------------+----------------+---------------------------------------------+
+| stevetarzia.com      | 1606883816.353 |  50.0 to 50.0  | grits.stevetarzia.com.                      |
++----------------------+----------------+----------------+---------------------------------------------+
+| tripadvisor.com      | 1606883785.243 |  2.0 to 190.0  |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| twitter.com          | 1606883760.405 |  21.0 to 21.0  |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| uchicago.edu         | 1606883806.634 |  25.0 to 25.0  | ec2-34-200-129-209.compute-1.amazonaws.com. |
++----------------------+----------------+----------------+---------------------------------------------+
+| users.cs.northwester | 1606883805.196 |   1.0 to 1.0   |                                             |
+| n.edu                |                |                |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| walmart.com          | 1606883796.163 |  25.0 to 29.0  |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| yelp.com             | 1606883771.656 |  3.0 to 180.0  |                                             |
++----------------------+----------------+----------------+---------------------------------------------+
+| youtube.com          | 1606883755.731 |  2.0 to 125.0  | lt-in-f136.1e100.net.                       |
+|                      |                |                | lt-in-f190.1e100.net.                       |
+|                      |                |                | lt-in-f91.1e100.net.                        |
+|                      |                |                | lt-in-f93.1e100.net.                        |
+|                      |                |                | lga34s30-in-f14.1e100.net.                  |
+|                      |                |                | ord38s04-in-f14.1e100.net.                  |
+|                      |                |                | lga34s19-in-f14.1e100.net.                  |
+|                      |                |                | lga34s18-in-f14.1e100.net.                  |
+|                      |                |                | ord37s03-in-f110.1e100.net.                 |
+|                      |                |                | ord37s03-in-f14.1e100.net.                  |
+|                      |                |                | ord37s08-in-f14.1e100.net.                  |
+|                      |                |                | ord38s09-in-f14.1e100.net.                  |
++----------------------+----------------+----------------+---------------------------------------------+
 
-          Web Server Software              Count
-================================================
-Apache                                       8  
-Apache/2.4.7 (Ubuntu)                        2  
-Server                                       2  
-YouTube Frontend Proxy                       1  
-tsa_b                                        1  
-Apache/2.2.34 (Amazon)                       1  
-Apache/2.4.43 () OpenSSL/1.0.2k-fips         1  
-snooserv                                     1  
-Microsoft-IIS/10.0                           1  
-Apache/2.2.15 (Red Hat) mod_ssl/2.2.15       1  
-OpenSSL/1.0.1e-fips                             
-mw1395.eqiad.wmnet                           1  
-cloudflare                                   1  
-Apache/2.4.29 (Ubuntu)                       1  
 
-Server Feature   % Support
-==========================
-Plain HTTP        96.296  
-HTTPS Redirect    85.185  
-HSTS              37.037  
-IPv6              18.519  
+
+
+
+=========================================== IP Address Data ============================================
++----------------------+-----------------+--------------------------------------+----------------------+
+|       Website        | IPv4 Addresses  |            IPv6 Addresses            |  IPv4 Geolocations   |
++======================+=================+======================================+======================+
+| amazon.com           | 176.32.103.205  |                                      | "Ashburn, Virginia,  |
+|                      | 176.32.98.166   |                                      | United States"       |
+|                      | 205.251.242.103 |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| asee.org             | 216.185.13.131  |                                      | "United States"      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| auditoryneuroscience | 144.214.26.111  |                                      | "Central, Central    |
+| .com                 |                 |                                      | and Western          |
+|                      |                 |                                      | District, Hong Kong" |
++----------------------+-----------------+--------------------------------------+----------------------+
+| clocktab.com         | 104.28.4.211    | 2606:4700:3032::681c:5d3             | "United States"      |
+|                      | 104.28.5.211    | 2606:4700:3035::681c:4d3             |                      |
+|                      | 172.67.170.56   | 2606:4700:3035::ac43:aa38            |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| en.wikipedia.org     | 208.80.153.224  | 2620:0:861:ed1a::1                   | "United States"      |
+|                      | 208.80.154.224  | 2620:0:862:ed1a::1                   | "Netherlands"        |
+|                      | 91.198.174.192  |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| facebook.com         | 157.240.18.35   | 2a03:2880:f103:83:face:b00c:0:25de   | "United States"      |
+|                      | 157.240.195.35  | 2a03:2880:f127:283:face:b00c:0:25de  |                      |
+|                      | 157.240.2.35    | 2a03:2880:f127:83:face:b00c:0:25de   |                      |
+|                      | 157.240.221.35  | 2a03:2880:f142:82:face:b00c:0:25de   |                      |
+|                      | 69.171.250.35   | 2a03:2880:f158:82:face:b00c:0:25de   |                      |
+|                      |                 | 2a03:2880:f1ff:83:face:b00c:0:25de   |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| fandom.com           | 151.101.0.194   |                                      | "United States"      |
+|                      | 151.101.128.194 |                                      |                      |
+|                      | 151.101.192.194 |                                      |                      |
+|                      | 151.101.64.194  |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| gradeinflation.com   | 66.70.176.24    |                                      | "Beauharnois,        |
+|                      |                 |                                      | Quebec, Canada"      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| illinois.edu         | 192.17.172.3    |                                      | "Urbana, Illinois,   |
+|                      |                 |                                      | United States"       |
++----------------------+-----------------+--------------------------------------+----------------------+
+| imdb.com             | 52.94.225.248   |                                      | "Ashburn, Virginia,  |
+|                      | 52.94.228.167   |                                      | United States"       |
+|                      | 52.94.237.74    |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| instagram.com        | 107.23.24.80    | 2406:da00:ff00::12d5:a083            | "Ashburn, Virginia,  |
+|                      | 18.213.160.131  | 2406:da00:ff00::12d6:9608            | United States"       |
+|                      | 18.235.93.155   | 2406:da00:ff00::22c0:426a            | "United States"      |
+|                      | 3.208.195.159   | 2406:da00:ff00::22c3:3ba             | "Queens, New York,   |
+|                      | 3.208.232.245   | 2406:da00:ff00::22c3:61eb            | United States"       |
+|                      | 3.208.236.94    | 2406:da00:ff00::22c3:ad7a            | "Virginia, United    |
+|                      | 3.209.176.245   | 2406:da00:ff00::22c5:42a5            | States"              |
+|                      | 3.210.196.55    | 2406:da00:ff00::22c7:f0de            | "Elkridge, Maryland, |
+|                      | 3.212.211.9     | 2406:da00:ff00::22cb:7c9             | United States"       |
+|                      | 3.212.83.203    | 2406:da00:ff00::22ce:3efe            | "Brooklyn, New York, |
+|                      | 3.214.214.171   | 2406:da00:ff00::22ce:9f2b            | United States"       |
+|                      | 3.214.242.45    | 2406:da00:ff00::22e3:85b3            | "Hollywood, Florida, |
+|                      | 3.216.253.146   | 2406:da00:ff00::22e4:5dc8            | United States"       |
+|                      | 3.217.178.33    | 2406:da00:ff00::22ee:ad51            |                      |
+|                      | 3.219.90.152    | 2406:da00:ff00::22ef:2786            |                      |
+|                      | 3.222.43.26     | 2406:da00:ff00::22ef:59d1            |                      |
+|                      | 3.223.111.137   | 2406:da00:ff00::23a8:352f            |                      |
+|                      | 3.224.133.228   | 2406:da00:ff00::23a8:abfc            |                      |
+|                      | 3.224.37.102    | 2406:da00:ff00::23aa:a069            |                      |
+|                      | 3.226.111.93    | 2406:da00:ff00::23ab:6dbf            |                      |
+|                      | 3.226.96.24     | 2406:da00:ff00::3400:260d            |                      |
+|                      | 3.232.148.177   | 2406:da00:ff00::3400:8726            |                      |
+|                      | 3.94.220.22     | 2406:da00:ff00::3400:b2c3            |                      |
+|                      | 34.192.66.106   | 2406:da00:ff00::3401:221a            |                      |
+|                      | 34.193.5.242    | 2406:da00:ff00::3401:7c0d            |                      |
+|                      | 34.194.88.13    | 2406:da00:ff00::3402:1a8e            |                      |
+|                      | 34.195.173.122  | 2406:da00:ff00::3402:961c            |                      |
+|                      | 34.199.240.222  | 2406:da00:ff00::3402:a426            |                      |
+|                      | 34.200.35.57    | 2406:da00:ff00::3402:a9c5            |                      |
+|                      | 34.206.33.202   | 2406:da00:ff00::3402:e47             |                      |
+|                      | 34.227.133.179  | 2406:da00:ff00::3403:478f            |                      |
+|                      | 34.227.187.18   | 2406:da00:ff00::3404:8691            |                      |
+|                      | 34.231.40.113   | 2406:da00:ff00::3405:b701            |                      |
+|                      | 34.232.174.143  | 2406:da00:ff00::3405:c7a0            |                      |
+|                      | 34.237.200.213  | 2406:da00:ff00::3405:dcf6            |                      |
+|                      | 34.238.173.81   | 2406:da00:ff00::3416:c89d            |                      |
+|                      | 34.238.65.211   | 2406:da00:ff00::3417:834f            |                      |
+|                      | 34.239.18.154   | 2406:da00:ff00::342d:74cf            |                      |
+|                      | 35.168.171.252  | 2406:da00:ff00::3436:8e10            |                      |
+|                      | 35.168.53.47    | 2406:da00:ff00::3436:e85c            |                      |
+|                      | 35.171.109.191  | 2406:da00:ff00::3447:a7a3            |                      |
+|                      | 35.172.167.44   | 2406:da00:ff00::3448:c5df            |                      |
+|                      | 35.173.151.18   | 2406:da00:ff00::3449:e256            |                      |
+|                      | 35.173.3.158    | 2406:da00:ff00::3449:f901            |                      |
+|                      | 52.0.38.13      | 2406:da00:ff00::3457:8514            |                      |
+|                      | 52.1.109.248    | 2406:da00:ff00::34c8:9c63            |                      |
+|                      | 52.1.238.189    | 2406:da00:ff00::34c8:c9b9            |                      |
+|                      | 52.2.26.142     | 2406:da00:ff00::34ca:47cc            |                      |
+|                      | 52.200.156.99   | 2406:da00:ff00::34ca:aca             |                      |
+|                      | 52.200.54.57    | 2406:da00:ff00::34cc:be9d            |                      |
+|                      | 52.201.106.96   | 2406:da00:ff00::35c:69b7             |                      |
+|                      | 52.202.10.202   | 2406:da00:ff00::35e:dc16             |                      |
+|                      | 52.202.71.204   | 2406:da00:ff00::3650:6426            |                      |
+|                      | 52.204.190.157  | 2406:da00:ff00::3650:df00            |                      |
+|                      | 52.207.95.49    | 2406:da00:ff00::3652:7ad5            |                      |
+|                      | 52.22.200.157   | 2406:da00:ff00::3652:a4f8            |                      |
+|                      | 52.23.94.118    | 2406:da00:ff00::3653:92aa            |                      |
+|                      | 52.4.134.145    | 2406:da00:ff00::3653:bae1            |                      |
+|                      | 52.45.71.214    | 2406:da00:ff00::3691:317b            |                      |
+|                      | 52.5.220.246    | 2406:da00:ff00::3691:af9             |                      |
+|                      | 52.5.39.111     | 2406:da00:ff00::36cc:7334            |                      |
+|                      | 52.7.199.54     | 2406:da00:ff00::36d2:852d            |                      |
+|                      | 52.71.109.30    | 2406:da00:ff00::3d1:4126             |                      |
+|                      | 52.71.167.163   | 2406:da00:ff00::3d1:b0f5             |                      |
+|                      | 52.71.211.145   | 2406:da00:ff00::3d2:39c1             |                      |
+|                      | 52.72.191.48    | 2406:da00:ff00::3d2:51b1             |                      |
+|                      | 52.72.197.223   | 2406:da00:ff00::3d3:be26             |                      |
+|                      | 52.73.139.89    | 2406:da00:ff00::3d4:53cb             |                      |
+|                      | 52.73.226.86    | 2406:da00:ff00::3d5:938f             |                      |
+|                      | 54.157.88.207   | 2406:da00:ff00::3d6:d12e             |                      |
+|                      | 54.165.214.173  | 2406:da00:ff00::3d6:d6ab             |                      |
+|                      | 54.172.200.155  | 2406:da00:ff00::3d9:45ef             |                      |
+|                      | 54.80.223.0     | 2406:da00:ff00::3dc:535d             |                      |
+|                      |                 | 2406:da00:ff00::3df:6f89             |                      |
+|                      |                 | 2406:da00:ff00::3e0:2566             |                      |
+|                      |                 | 2406:da00:ff00::3e0:350              |                      |
+|                      |                 | 2406:da00:ff00::3e0:d91a             |                      |
+|                      |                 | 2406:da00:ff00::3e1:f3ec             |                      |
+|                      |                 | 2406:da00:ff00::3e4:4edb             |                      |
+|                      |                 | 2406:da00:ff00::6b17:1850            |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| kellogg.northwestern | 165.124.147.150 |                                      | "United States"      |
+| .edu                 |                 |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| kli.org              | 208.97.188.67   |                                      | "United States"      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| mccormick.northweste | 129.105.1.129   |                                      | "Chicago, Illinois,  |
+| rn.edu               |                 |                                      | United States"       |
++----------------------+-----------------+--------------------------------------+----------------------+
+| northwestern.edu     | 129.105.136.48  |                                      | "United States"      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| pinterest.com        | 151.101.0.84    |                                      | "United States"      |
+|                      | 151.101.128.84  |                                      |                      |
+|                      | 151.101.192.84  |                                      |                      |
+|                      | 151.101.64.84   |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| pmichaud.com         | 23.254.203.248  |                                      | "United States"      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| reddit.com           | 151.101.1.140   |                                      | "United States"      |
+|                      | 151.101.129.140 |                                      |                      |
+|                      | 151.101.193.140 |                                      |                      |
+|                      | 151.101.65.140  |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| spacejam.com         | 75.2.104.223    |                                      | "United States"      |
+|                      | 99.83.180.228   |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| stevetarzia.com      | 54.245.121.172  |                                      | "Boardman, Oregon,   |
+|                      |                 |                                      | United States"       |
++----------------------+-----------------+--------------------------------------+----------------------+
+| tripadvisor.com      | 192.229.162.112 |                                      | "Texas, United       |
+|                      | 192.229.182.112 |                                      | States"              |
+|                      | 192.229.189.15  |                                      | "London, England,    |
+|                      |                 |                                      | United Kingdom"      |
+|                      |                 |                                      | "United States"      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| twitter.com          | 104.244.42.1    |                                      | "United States"      |
+|                      | 104.244.42.129  |                                      |                      |
+|                      | 104.244.42.193  |                                      |                      |
+|                      | 104.244.42.65   |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| uchicago.edu         | 34.200.129.209  |                                      | "United States"      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| users.cs.northwester | 165.124.180.20  |                                      | "United States"      |
+| n.edu                |                 |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| walmart.com          | 161.170.230.170 |                                      | "United States"      |
+|                      | 161.170.232.170 |                                      |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+| yelp.com             | 151.101.36.116  |                                      | "Amsterdam, North    |
+|                      | 151.101.68.116  |                                      | Holland,             |
+|                      | 151.101.76.116  |                                      | Netherlands"         |
+|                      | 199.232.36.116  |                                      | "Denver, Colorado,   |
+|                      | 199.232.64.116  |                                      | United States"       |
+|                      | 199.232.76.116  |                                      | "Central, Central    |
+|                      | 199.232.8.116   |                                      | and Western          |
+|                      |                 |                                      | District, Hong Kong" |
+|                      |                 |                                      | "New York, New York, |
+|                      |                 |                                      | United States"       |
+|                      |                 |                                      | "Ashburn, Virginia,  |
+|                      |                 |                                      | United States"       |
+|                      |                 |                                      | "Chicago, Illinois,  |
+|                      |                 |                                      | United States"       |
+|                      |                 |                                      | "Dallas, Texas,      |
+|                      |                 |                                      | United States"       |
++----------------------+-----------------+--------------------------------------+----------------------+
+| youtube.com          | 108.177.14.136  | 2607:f8b0:4000:802::200e             | "United States"      |
+|                      | 108.177.14.190  | 2607:f8b0:4006:806::200e             |                      |
+|                      | 108.177.14.91   | 2607:f8b0:4006:818::200e             |                      |
+|                      | 108.177.14.93   | 2607:f8b0:4006:819::200e             |                      |
+|                      | 142.250.64.78   | 2607:f8b0:4009:800::200e             |                      |
+|                      | 172.217.0.14    | 2607:f8b0:4009:803::200e             |                      |
+|                      | 172.217.12.142  | 2607:f8b0:4009:812::200e             |                      |
+|                      | 172.217.3.110   | 2607:f8b0:4009:815::200e             |                      |
+|                      | 172.217.6.110   | 2607:f8b0:4009:816::200e             |                      |
+|                      | 172.217.8.174   | 2a00:1450:4010:c0b::5b               |                      |
+|                      | 172.217.9.78    | 2a00:1450:4010:c0b::5d               |                      |
+|                      |                 | 2a00:1450:4010:c0b::88               |                      |
+|                      |                 | 2a00:1450:4010:c0b::be               |                      |
++----------------------+-----------------+--------------------------------------+----------------------+
+
+
+
+
+
+=================================== Server Feature Data ====================================
++----------------------+----------------------+--------------+--------------+--------------+
+|       Website        |     HTTP Server      |  Listening   |   Redirect   | HTTP Strict  |
+|                      |       Software       |   for HTTP   |   to HTTPS   |  Transport   |
+|                      |                      |              |              |   Security   |
++======================+======================+==============+==============+==============+
+| amazon.com           | Server               |      X       |      X       |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| asee.org             | Apache/2.4.7         |      X       |              |              |
+|                      | (Ubuntu)             |              |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| auditoryneuroscience | Apache/2.4.29        |      X       |              |              |
+| .com                 | (Ubuntu)             |              |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| clocktab.com         | cloudflare           |      X       |      X       |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| en.wikipedia.org     | mw1264.eqiad.wmnet   |      X       |      X       |      X       |
++----------------------+----------------------+--------------+--------------+--------------+
+| facebook.com         |                      |      X       |      X       |      X       |
++----------------------+----------------------+--------------+--------------+--------------+
+| fandom.com           |                      |      X       |      X       |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| gradeinflation.com   | Apache               |      X       |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| illinois.edu         | Apache/2.2.15 (Red   |      X       |      X       |              |
+|                      | Hat) mod_ssl/2.2.15  |              |              |              |
+|                      | OpenSSL/1.0.1e-fips  |              |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| imdb.com             | Server               |      X       |      X       |      X       |
++----------------------+----------------------+--------------+--------------+--------------+
+| instagram.com        |                      |      X       |      X       |      X       |
++----------------------+----------------------+--------------+--------------+--------------+
+| kellogg.northwestern | Microsoft-IIS/10.0   |      X       |      X       |              |
+| .edu                 |                      |              |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| kli.org              | Apache               |      X       |      X       |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| mccormick.northweste | Apache/2.4.7         |      X       |      X       |              |
+| rn.edu               | (Ubuntu)             |              |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| northwestern.edu     | Apache               |      X       |      X       |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| pinterest.com        |                      |      X       |      X       |      X       |
++----------------------+----------------------+--------------+--------------+--------------+
+| pmichaud.com         | Apache               |      X       |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| reddit.com           | snooserv             |      X       |      X       |      X       |
++----------------------+----------------------+--------------+--------------+--------------+
+| spacejam.com         | Apache/2.4.43 ()     |      X       |      X       |      X       |
+|                      | OpenSSL/1.0.2k-fips  |              |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| stevetarzia.com      | Apache/2.2.34        |      X       |      X       |              |
+|                      | (Amazon)             |              |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| tripadvisor.com      | Apache               |      X       |      X       |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| twitter.com          | tsa_b                |      X       |      X       |      X       |
++----------------------+----------------------+--------------+--------------+--------------+
+| uchicago.edu         | Apache               |      X       |      X       |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| users.cs.northwester | Apache               |      X       |      X       |              |
+| n.edu                |                      |              |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| walmart.com          |                      |      X       |      X       |              |
++----------------------+----------------------+--------------+--------------+--------------+
+| yelp.com             | Apache               |      X       |      X       |      X       |
++----------------------+----------------------+--------------+--------------+--------------+
+| youtube.com          | YouTube Frontend     |      X       |      X       |      X       |
+|                      | Proxy                |              |              |              |
++----------------------+----------------------+--------------+--------------+--------------+
+
+
+
+
+
+=========================== Connection Security Data ============================
++------------------------------+---------------+--------------------------------+
+|           Website            | Supported TLS |        Root Certificate        |
+|                              |   Versions    |           Authority            |
++==============================+===============+================================+
+|                              |    TLSv1.0    |                                |
+| amazon.com                   |    TLSv1.1    |        "VeriSign, Inc."        |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| asee.org                     |    TLSv1.1    |       Comodo CA Limited        |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+| auditoryneuroscience.com     |    TLSv1.3    |  Digital Signature Trust Co.   |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| clocktab.com                 |    TLSv1.1    |           Baltimore            |
+|                              |    TLSv1.2    |                                |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+| en.wikipedia.org             |    TLSv1.2    |  Digital Signature Trust Co.   |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| facebook.com                 |    TLSv1.1    |          DigiCert Inc          |
+|                              |    TLSv1.2    |                                |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+| fandom.com                   |    TLSv1.2    |        GlobalSign nv-sa        |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+| gradeinflation.com           |    TLSv1.2    |  Digital Signature Trust Co.   |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| illinois.edu                 |    TLSv1.1    |       Comodo CA Limited        |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| imdb.com                     |    TLSv1.1    | "Starfield Technologies, Inc." |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| instagram.com                |    TLSv1.1    |          DigiCert Inc          |
+|                              |    TLSv1.2    |                                |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| kellogg.northwestern.edu     |    TLSv1.1    |       Comodo CA Limited        |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+| kli.org                      |    TLSv1.2    |  Digital Signature Trust Co.   |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| mccormick.northwestern.edu   |    TLSv1.1    |       Comodo CA Limited        |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| northwestern.edu             |    TLSv1.1    |       COMODO CA Limited        |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| pinterest.com                |    TLSv1.1    |          DigiCert Inc          |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+| pmichaud.com                 |    TLSv1.2    |       Comodo CA Limited        |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| reddit.com                   |    TLSv1.1    |          DigiCert Inc          |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+| spacejam.com                 |    TLSv1.1    |    GlobalSign Root CA - R3     |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| stevetarzia.com              |    TLSv1.1    |  Digital Signature Trust Co.   |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+| tripadvisor.com              |    TLSv1.2    |    GlobalSign Root CA - R3     |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+| twitter.com                  |    TLSv1.2    |          DigiCert Inc          |
++------------------------------+---------------+--------------------------------+
+| uchicago.edu                 |    TLSv1.2    |     The USERTRUST Network      |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+| users.cs.northwestern.edu    |    TLSv1.2    |     The USERTRUST Network      |
++------------------------------+---------------+--------------------------------+
+| walmart.com                  |    TLSv1.1    |    GlobalSign Root CA - R3     |
+|                              |    TLSv1.2    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| yelp.com                     |    TLSv1.1    |          DigiCert Inc          |
+|                              |    TLSv1.2    |                                |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+|                              |    TLSv1.0    |                                |
+| youtube.com                  |    TLSv1.1    |    GlobalSign Root CA - R2     |
+|                              |    TLSv1.2    |                                |
+|                              |    TLSv1.3    |                                |
++------------------------------+---------------+--------------------------------+
+
+
+
+
+
+============== Round Trip Time Range ===============
++--------------------------------------------------+
+|           Website              Min RTT   Max RTT |
+|                                 (ms)      (ms)   |
++==================================================+
+| kellogg.northwestern.edu             1         1 |
+| mccormick.northwestern.edu           1         1 |
+| users.cs.northwestern.edu            1         1 |
+| facebook.com                         2       103 |
+| fandom.com                           2         3 |
+| pinterest.com                        2         3 |
+| reddit.com                           2         2 |
+| spacejam.com                         2         2 |
+| tripadvisor.com                      2       190 |
+| youtube.com                          2       125 |
+| clocktab.com                         3         4 |
+| northwestern.edu                     3         3 |
+| yelp.com                             3       180 |
+| illinois.edu                         6         6 |
+| gradeinflation.com                  20        20 |
+| twitter.com                         21        21 |
+| kli.org                             23        23 |
+| imdb.com                            24        25 |
+| instagram.com                       24        26 |
+| amazon.com                          25        25 |
+| uchicago.edu                        25        25 |
+| walmart.com                         25        29 |
+| en.wikipedia.org                    26       107 |
+| pmichaud.com                        31        31 |
+| asee.org                            32        32 |
+| stevetarzia.com                     50        50 |
+| auditoryneuroscience.com           183       183 |
++--------------------------------------------------+
+
+
+
+
+
+================== Root CA Frequency ==================
++-----------------------------------------------------+
+|   Root Certificate Authority     Count   Percentage |
++=====================================================+
+| DigiCert Inc                         6       22.222 |
+| Digital Signature Trust Co.          5       18.519 |
+| Comodo CA Limited                    5       18.519 |
+| GlobalSign Root CA - R3              3       11.111 |
+| The USERTRUST Network                2        7.407 |
+| GlobalSign Root CA - R2              1        3.704 |
+| COMODO CA Limited                    1        3.704 |
+| "Starfield Technologies, Inc."       1        3.704 |
+| GlobalSign nv-sa                     1        3.704 |
+| Baltimore                            1        3.704 |
+| "VeriSign, Inc."                     1        3.704 |
++-----------------------------------------------------+
+
+
+
+
+
+===================== Server Software Frequency ======================
++--------------------------------------------------------------------+
+|                    HTTP Server Software                      Count |
++====================================================================+
+| Apache                                                           8 |
+| Apache/2.4.7 (Ubuntu)                                            2 |
+| Server                                                           2 |
+| YouTube Frontend Proxy                                           1 |
+| tsa_b                                                            1 |
+| Apache/2.2.34 (Amazon)                                           1 |
+| Apache/2.4.43 () OpenSSL/1.0.2k-fips                             1 |
+| snooserv                                                         1 |
+| Microsoft-IIS/10.0                                               1 |
+| Apache/2.2.15 (Red Hat) mod_ssl/2.2.15 OpenSSL/1.0.1e-fips       1 |
+| mw1264.eqiad.wmnet                                               1 |
+| cloudflare                                                       1 |
+| Apache/2.4.29 (Ubuntu)                                           1 |
++--------------------------------------------------------------------+
+
+
+
+
+
+=== Server Feature Support ====
++-----------------------------+
+| Server Feature    % Support |
++=============================+
+| SSLv2                 0.000 |
+| SSLv3                 0.000 |
+| TLSv1.0              55.556 |
+| TLSv1.1              62.963 |
+| TLSv1.2              96.296 |
+| TLSv1.3              44.444 |
+| Plain HTTP          100.000 |
+| HTTPS Redirect       85.185 |
+| HSTS                 37.037 |
+| IPv6                 18.519 |
++-----------------------------+
