@@ -197,7 +197,7 @@ output_file.write(security_table.draw()+'\n\n\n\n\n\n')
 rtt_table = Texttable()
 rtt_table.set_deco(Texttable.HEADER | Texttable.BORDER)
 rtt_table.set_cols_align(['l', 'r', 'r'])
-rtt_table.set_cols_dtype(['t', 'i', 'i'])
+rtt_table.set_cols_dtype(['t', 'a', 'a'])
 rtt_table.set_cols_valign(['c', 'c', 'c'])
 rtt_table.set_cols_width([28, 7, 7])
 
