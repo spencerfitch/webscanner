@@ -10,11 +10,6 @@
 #    0 - exited normally
 #    1 - bad command line input
 
-# TODO
-#   - Ask about hsts (should we only base it on redirects or should we try https connection too)
-#   - Verify where I'm getting hsts and server data from
-#   - Update TLS scan to use nmap for everything but tls1.3 (to check for lower ssl)
-#   - Insecure HTTP should be 100%
 
 import sys
 from typing import List, Tuple
@@ -224,15 +219,12 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
 
     except Exception as e:
         sys.stdout.write('HTTP connection failed with error:\n{0}\n'.format(e))
-        # Not listening for http connections
+        # HTTP connection failed
         connection.close()
+        server = None
         listen_http = False
         redirect_https = False
         hsts = False
-
-        # Try https connection
-        server, _ = get_https_data(website, '/')
-
     
     return server, listen_http, redirect_https, hsts
 
@@ -389,7 +381,6 @@ def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
             # Failed to get rtt -> try next ipv4
             sys.stdout.write('Failed to connect to {0} to measure RTT\n'.format(ipv4))
             continue
-            
 
         for line in result.split('\n'):
             if line[:4] == 'real':
@@ -402,6 +393,7 @@ def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
     
     if rtt_range == [float('inf'), 0]:
         sys.stdout.write('Failed to make any connections to measure RTT of IPv4 addresses:\n{0}\n'.format(ipv4_addresses))
+        rtt_range = [float('inf'), float('inf')]
 
     return rtt_range
             
