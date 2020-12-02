@@ -481,11 +481,19 @@ scans = {}
 for w in websites:
     sys.stdout.write('Scanning {0}\n'.format(w))
 
-    scans[w] = {
-        "scan_time": time.time(),
-        "ipv4_addresses": get_ip_addresses(w, 'ipv4'),
-        "ipv6_addresses": get_ip_addresses(w, 'ipv6')}
+    scans[w] = {"scan_time": time.time()}
 
+    '''
+    try: 
+        subprocess.check_output('nslookup 8.8.8.8', timeout=10, stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
+        if e.returncode == 127:
+            # nslookup not installed --> skip this step
+            sys.stderr.write('WARNING scan.py: Required command NSLOOKUP is not installed on this machine. IPv4 and IPv6 addresses will not be included in the output.\n')
+        else:
+            sys.stdout.write('what')
+    else:
+    '''
     ipv4_addresses = get_ip_addresses(w, 'ipv4')
     ipv6_addresses = get_ip_addresses(w, 'ipv6')
 
