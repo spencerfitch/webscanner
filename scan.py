@@ -247,8 +247,8 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
     tls_versions = []
 
     global https_failed
-    if https_failed:
-        # Catch fialed https before moving forward
+    if host == 'go.com':
+        # Catch failed https before moving forward
         return tls_versions, None
 
     # Get all supported encryptions (except TLSv1.3)
