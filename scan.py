@@ -246,11 +246,30 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
         tls_versions : list of supported TLS versions
         root_ca      : root certificate authority
     '''
-    tls_options = ['-tls1', '-tls1_1', '-tls1_2', '-tls1_3']
-    tls_strings = ['TLSv1.0', 'TLSv1.1', 'TLSv1.2', 'TLSv1.3']
+    tls_strings = ['SSLv2', 'SSLv3', 'TLSv1.0', 'TLSv1.1', 'TLSv1.2']
 
     tls_versions = []
 
+    # Get all supported encryptions (except TLSv1.3)
+    command = 'nmap --script ssl-enum-ciphers -p 443 {0}'.format(host)
+    try:
+        response = subprocess.check_output(command, shell=True, timeout=10, stderr=subprocess.STDOUT).decode('utf-8')
+
+        for line in response.split('\n|'):
+            strip_line = (line.strip())[:-1]
+            # TLS version match found ---> add to list
+            if strip_line in tls_strings:
+                tls_strings.append(strip_line)
+
+    except subprocess.TimeoutExpired:
+        # nmap timed out
+        sys.stdout.write('nmap on {0} timed out after 10 seconds'.format(host))
+    except subprocess.CalledProcessError:
+        # nmap returned nonzero exit code
+        sys.stdout.write('nmap on {0} returned non-zero exit code'.format(host))
+
+
+    '''
     for tls in range(len(tls_options)):
         try:
             result = subprocess.check_output('echo | openssl s_client {0} -connect {1}:443'.format(tls_options[tls], host), shell=True, timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
@@ -260,6 +279,18 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
         except subprocess.SubprocessError:
             # Nonzero return code
             continue
+    
+    '''
+    # Get TLSv1.3 with openssl
+    try:
+        result = subprocess.check_output('echo | openssl s_client -tls1_3 -connect {0}:443'.format(host), shell=True, timeout=2, stderr=subprocess.STDOUT)
+
+        # Didn't thow error on nonzero return code, so must have successfully connected via TLSv1.3
+        tls_versions.append('TLSv1.3')
+    except subprocess.SubprocessError:
+        # Nonzero return code (could not connect over TLSv1.3)
+        pass
+
     try:
         result = subprocess.check_output('echo | openssl s_client -connect {0}:443'.format(host), shell=True, timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
         # Parse result to retreive root_ca
@@ -281,7 +312,7 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
     except subprocess.SubprocessError:
         # No tls supported ---> root_ca is none
         root_ca = None
-
+    
 
     return tls_versions, root_ca
 
