@@ -21,9 +21,9 @@ import subprocess   # for making cmd scans
 import http.client  # for http connections
 import maxminddb    # for geolocations
 
-#'91.239.100.100', 
+
 dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9', 
-                 '64.6.65.6', '185.228.168.168', 
+                 '64.6.65.6', '185.228.168.168', '91.239.100.100',
                  '77.88.8.7', '156.154.70.1', '198.101.242.72', '176.103.130.130']
                  
 
@@ -289,8 +289,10 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
                     root_ca = ', '.join([root_ca, categories[i]])
                 break
     
-    except subprocess.SubprocessError:
+    except subprocess.TimeoutExpired:
         # No tls supported ---> root_ca is none
+        root_ca = None
+    except subprocess.SubprocessError:
         root_ca = None
     
 
