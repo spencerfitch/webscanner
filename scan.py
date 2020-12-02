@@ -114,6 +114,7 @@ def get_https_data(host: str, path: str) -> Tuple[str, bool]:
 
     except:
         # HTTPS connection failed?
+        https_failed = True
         print('HTTPS connection failed for : ' + host)
         return None, False
 
@@ -270,6 +271,10 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
     except subprocess.SubprocessError:
         # Nonzero return code (could not connect over TLSv1.3)
         pass
+
+    if https_failed:
+        # Catch fialed https before moving forward
+        return tls_versions, None
 
     try:
         result = subprocess.check_output('echo | openssl s_client -connect {0}:443'.format(host), shell=True, timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
@@ -465,6 +470,7 @@ with open(sys.argv[1], "r") as input_file:
 # Run scans
 scans = {}
 for w in websites:
+    https_failed = False
     sys.stdout.write('Scanning {0}\n'.format(w))
 
     scans[w] = {"scan_time": time.time()}
