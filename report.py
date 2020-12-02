@@ -27,15 +27,41 @@ with open(sys.argv[1], 'r') as input_file:
 output_file = open(sys.argv[2], 'w')
 
 
+# Dynamically size title to match table width
+title_string = ' Report of website scan results from {0} '.format(sys.argv[1])
+width_diff = 104 - len(title_string)
+left_char = width_diff // 2
+right_char = width_diff - left_char
 
-output_file.write('============ Analysis of Website Scan results from {0} ============\n\n'.format(sys.argv[1]))
+left_string = ''
+for i in range(left_char):
+    left_string += '='
+right_string = ''
+for i in range(right_char):
+    right_string += '='
+
+full_title = left_string + title_string + right_string + '\n\n'
+
+output_file.write(full_title)
+table_of_contents = '== Table Guide ==\n' + \
+                    '\t1: General Scan Data          - Scan Time, RTT Range, and RDNS Names\n' + \
+                    '\t2: IP Address Data            - IPv4 Addresses, IPv6 Addresses, and IPv4 Geolocations)\n' + \
+                    '\t3: Server Feature Data        - HTTP Server Software, Listening for HTTP, Redirect to HTTPS, and HSTS\n' + \
+                    '\t4: Connection Security Data   - TLS Versions, and Root Certificate Authority\n' + \
+                    '\t5: Round Trip Time Range      - List of RTT for all websites sorted by the minimum\n' + \
+                    '\t6: Root CA Popularity         - List of all Root CAs ordered by their popularity\n' + \
+                    '\t7: Server Software Popularity - List of all Server Software ordered by popularity\n' + \
+                    '\t8: Server Feature Support     - List of percent support for various server features\n\n\n\n'
+
+
+output_file.write(table_of_contents)
 
 # Table Containing: HOST | Scan Time | RTT Range | Reverse DNS Names
 gen_table = Texttable()
 gen_table.set_cols_dtype(['t', 'f', 't', 't'])
 gen_table.set_cols_align(['l', 'r', 'c', 'l'])
 gen_table.set_cols_width([20, 14, 14, 43])
-gen_table_rows = [['Website', 'Scan Time', 'Rount Trp\nTime Range', 'Reverse DNS\nNames']]
+gen_table_rows = [['Website', 'Scan Time', 'Rount Trip\nTime Range', 'Reverse DNS\nNames']]
 
 # Table containing: HOST | IPv4 | IPv6 | GeoLoc
 ip_table = Texttable()
@@ -191,6 +217,7 @@ rootca_table.set_cols_align(['l', 'r', 'r'])
 rootca_table.set_cols_dtype(['t', 'i', 'f'])
 rootca_rows = [['Root Certificate Authority', 'Count', 'Percentage']]
 
+# Code for sorting dictionary by value from: https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
 sorted_ca = sorted(root_ca_count.items(), key=operator.itemgetter(1))
 sorted_ca.reverse()
 
@@ -214,6 +241,7 @@ servcount_table.set_cols_align(['l', 'r'])
 servcount_table.set_cols_dtype(['t', 'i'])
 servcount_rows = [['HTTP Server Software', 'Count']]
 
+# Code for sorting dictionary by value from: https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
 sorted_server = sorted(server_count.items(), key=operator.itemgetter(1))
 sorted_server.reverse()
 
