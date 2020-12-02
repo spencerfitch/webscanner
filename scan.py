@@ -26,6 +26,7 @@ dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9'
                  '64.6.65.6', '185.228.168.168', 
                  '77.88.8.7', '156.154.70.1', '198.101.242.72', '176.103.130.130']
                  
+https_failed = False
 
 def get_ip_addresses(website: str, ip_type: str) -> List[str]:
     ''' 
@@ -244,6 +245,10 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
 
     tls_versions = []
 
+    if https_failed:
+        # Catch fialed https before moving forward
+        return tls_versions, None
+
     # Get all supported encryptions (except TLSv1.3)
     command = 'nmap --script ssl-enum-ciphers -p 443 {0}'.format(host)
     try:
@@ -271,10 +276,6 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
     except subprocess.SubprocessError:
         # Nonzero return code (could not connect over TLSv1.3)
         pass
-
-    if https_failed:
-        # Catch fialed https before moving forward
-        return tls_versions, None
 
     try:
         result = subprocess.check_output('echo | openssl s_client -connect {0}:443'.format(host), shell=True, timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
