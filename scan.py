@@ -55,7 +55,7 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
     for dns in dns_resolvers:
         
         try:
-            result = subprocess.check_output(["nslookup", nstype, w, dns], timeout=3, stderr=subprocess.STDOUT).decode("utf-8") 
+            result = subprocess.check_output(["nslookup", nstype, w, dns], timeout=4, stderr=subprocess.STDOUT).decode("utf-8") 
         except subprocess.SubprocessError as e:
             # Did not return a result for this combination
             print(e)
@@ -321,7 +321,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
     for ipv4 in ipv4_addresses:
         # nslookup each ipv4 of website
         try:
-            result = subprocess.check_output(['nslookup', '-type=PTR', ipv4], timeout=3, stderr=subprocess.STDOUT).decode('utf-8')
+            result = subprocess.check_output(['nslookup', '-type=PTR', ipv4], timeout=4, stderr=subprocess.STDOUT).decode('utf-8')
             split_result = result.split('Non-authoritative answer:\n')
             if len(split_result) < 2:
                 # No answers provided
