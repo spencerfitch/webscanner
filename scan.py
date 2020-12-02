@@ -19,6 +19,7 @@
 import sys
 from typing import List, Tuple
 
+from shutil import which # Determining if command utility exits
 import time         # for epoch time
 import json         # for packaging result
 import subprocess   # for making cmd scans
@@ -263,24 +264,11 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
 
     except subprocess.TimeoutExpired as e:
         # nmap timed out
-        sys.stdout.write(str(e))
+        sys.stdout.write('{0}\n'.format(e))
     except subprocess.CalledProcessError:
         # nmap returned nonzero exit code
         sys.stdout.write('nmap on {0} returned non-zero exit code'.format(host))
 
-
-    '''
-    for tls in range(len(tls_options)):
-        try:
-            result = subprocess.check_output('echo | openssl s_client {0} -connect {1}:443'.format(tls_options[tls], host), shell=True, timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
-            
-            # Didn't throw error on nonzero return code, so must have successfully connected
-            tls_versions.append(tls_strings[tls])
-        except subprocess.SubprocessError:
-            # Nonzero return code
-            continue
-    
-    '''
     # Get TLSv1.3 with openssl
     try:
         result = subprocess.check_output('echo | openssl s_client -tls1_3 -connect {0}:443'.format(host), shell=True, timeout=2, stderr=subprocess.STDOUT)
@@ -353,7 +341,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
                         rdns.append(section[7:])
 
         except subprocess.TimeoutExpired as e:
-            sys.stdout.write(e+'\n')
+            sys.stdout.write('{0}\n'.format(e))
             continue
 
         except subprocess.SubprocessError:
@@ -449,8 +437,8 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
                 loc_parts.append(cat_data['names']['en'])
             except KeyError:
                 # Data not in database
-                #sys.stdout.write('{0}\t: key error - {1}'.format(ipv4, cat))
-                #sys.stdout.write('{0}\t: available keys - {1}'.format(ipv4, ', '.join(ip_data.keys())))
+                #sys.stdout.write('{0}\t: key error - {1}\n'.format(ipv4, cat))
+                #sys.stdout.write('{0}\t: available keys - {1}\n'.format(ipv4, ', '.join(ip_data.keys())))
                 continue
 
         # Build loc and add to geo_locations if not already added
@@ -487,22 +475,18 @@ for w in websites:
 
     scans[w] = {"scan_time": time.time()}
 
-    '''
-    try: 
-        subprocess.check_output('nslookup 8.8.8.8', timeout=10, stderr=subprocess.STDOUT)
-    except subprocess.CalledProcessError as e:
-        if e.returncode == 127:
-            # nslookup not installed --> skip this step
-            sys.stderr.write('WARNING scan.py: Required command NSLOOKUP is not installed on this machine. IPv4 and IPv6 addresses will not be included in the output.\n')
-        else:
-            sys.stdout.write('what')
-    else:
-    '''
-    ipv4_addresses = get_ip_addresses(w, 'ipv4')
-    ipv6_addresses = get_ip_addresses(w, 'ipv6')
+    if which('nslookup'):
+        ipv4_addresses = get_ip_addresses(w, 'ipv4')
+        ipv6_addresses = get_ip_addresses(w, 'ipv6')
+        rdns = get_dns_data(ipv4_addresses)
 
-    scans[w]['ipv4_addresses'] = ipv4_addresses
-    scans[w]['ipv6_addresses'] = ipv6_addresses
+        scans[w]['ipv4_addresses'] = ipv4_addresses
+        scans[w]['ipv6_addresses'] = ipv6_addresses
+        scans[w]['rdns_names'] = rdns
+    else:
+        # Necessary commandline utility available
+        sys.stderr.write('WARNING report.py: nslookup command not detected on machine, so ipv4_addresses, ipv6_addresses, and rdns_names will not be included in {0}\n'.format(sys.argv[2]))
+
 
     http_server, listen_http, redirect_https, hsts = get_http_data(w)
 
@@ -511,16 +495,19 @@ for w in websites:
     scans[w]['redirect_to_https'] = redirect_https
     scans[w]['hsts'] = hsts
 
-    tls_versions, root_ca = get_tls_data(w)
+    if which('nmap') and which('openssl') and which('echo'):
+        tls_versions, root_ca = get_tls_data(w)
 
-    scans[w]['tls_versions'] = tls_versions
-    scans[w]['root_ca'] = root_ca
+        scans[w]['tls_versions'] = tls_versions
+        scans[w]['root_ca'] = root_ca
+    else:
+        sys.stderr.write('WARNING report.py: nmap, openssl, or echo command not detected on machine, so tls_versions and root_ca will not be included in {0}\n'.format(sys.argv[2]))
 
-    rdns = get_dns_data(ipv4_addresses)
-    scans[w]['rdns_names'] = rdns
-
-    rtt_range = get_rtt_range(ipv4_addresses)
-    scans[w]['rtt_range'] = rtt_range
+    if which('sh') and which('echo') and which('time') and which('telnet'):
+        rtt_range = get_rtt_range(ipv4_addresses)
+        scans[w]['rtt_range'] = rtt_range
+    else:
+        sys.stderr.write('WARNING report.py: sh, echo, time, or telnet command not detected on machine, so rtt_range will not be included in {0}\n'.format(sys.argv[2]))
 
     geo_locations = get_geo_locations(ipv4_addresses)
     scans[w]['geo_locations'] = geo_locations
