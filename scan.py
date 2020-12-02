@@ -54,7 +54,7 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
     for dns in dns_resolvers:
         
         try:
-            result = subprocess.check_output(["nslookup", nstype, w, dns], timeout=3, stderr=subprocess.STDOUT).decode("utf-8") 
+            result = subprocess.check_output(["nslookup", nstype, w, dns], timeout=5, stderr=subprocess.STDOUT).decode("utf-8") 
         except subprocess.SubprocessError as e:
             # Did not return a result for this combination
             print(e)
@@ -104,7 +104,7 @@ def get_https_data(host: str, path: str) -> Tuple[str, bool]:
     '''
     try:
         # Establish HTTPS connection
-        connection = http.client.HTTPSConnection(host)
+        connection = http.client.HTTPSConnection(host, timeout=10)
 
         # Make request
         head = {'Host': host}
@@ -146,7 +146,7 @@ def follow_http_redirect(url: str, server: str) -> Tuple[str, bool, bool]:
     while count < 10:
         try:
             # Establish connection
-            connection = http.client.HTTPConnection(host)
+            connection = http.client.HTTPConnection(host, timeout=10)
 
             # Make request
             head = {'Host': host}
@@ -333,7 +333,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
     for ipv4 in ipv4_addresses:
         # nslookup each ipv4 of website
         try:
-            result = subprocess.check_output(['nslookup', '-type=PTR', ipv4], timeout=2, stderr=subprocess.STDOUT).decode('utf-8')
+            result = subprocess.check_output(['nslookup', '-type=PTR', ipv4], timeout=5, stderr=subprocess.STDOUT).decode('utf-8')
             split_result = result.split('Non-authoritative answer:\n')
             if len(split_result) < 2:
                 # No answers provided
