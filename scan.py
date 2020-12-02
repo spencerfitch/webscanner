@@ -247,7 +247,7 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
     tls_versions = []
 
     global https_failed
-    if host == 'go.com':
+    if https_failed:
         # Catch failed https before moving forward
         return tls_versions, None
 
@@ -385,8 +385,14 @@ def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
     for ipv4 in ipv4_addresses:
         try:
             # Measure rtt from commandline
-            result = subprocess.check_output(["sh", "-c", "time echo -e '\x1dclose\x0d' | telnet {0} 443".format(ipv4)], 
-                                             timeout=3, stderr=subprocess.STDOUT).decode('utf-8')
+            global https_failed
+            if https_failed:
+                result = subprocess.check_output(["sh", "-c", "time echo -e '\x1dclose\x0d' | telnet {0} 80".format(ipv4)], 
+                                                 timeout=3, stderr=subprocess.STDOUT).decode('utf-8')
+            else:
+                result = subprocess.check_output(["sh", "-c", "time echo -e '\x1dclose\x0d' | telnet {0} 443".format(ipv4)], 
+                                                 timeout=3, stderr=subprocess.STDOUT).decode('utf-8')
+
         except subprocess.SubprocessError:
             # Failed to get rtt -> try next ipv4
             sys.stdout.write('Failed to connect to {0} to measure RTT\n'.format(ipv4))
