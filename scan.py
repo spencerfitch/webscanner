@@ -54,7 +54,7 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
     for dns in dns_resolvers:
         
         try:
-            result = subprocess.check_output(["nslookup", nstype, w, dns], timeout=5, stderr=subprocess.STDOUT).decode("utf-8") 
+            result = subprocess.check_output(["nslookup", nstype, w, dns], timeout=3, stderr=subprocess.STDOUT).decode("utf-8") 
         except subprocess.SubprocessError as e:
             # Did not return a result for this combination
             print(e)
@@ -333,7 +333,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
     for ipv4 in ipv4_addresses:
         # nslookup each ipv4 of website
         try:
-            result = subprocess.check_output(['nslookup', '-type=PTR', ipv4], timeout=5, stderr=subprocess.STDOUT).decode('utf-8')
+            result = subprocess.check_output(['nslookup', '-type=PTR', ipv4], timeout=3, stderr=subprocess.STDOUT).decode('utf-8')
             split_result = result.split('Non-authoritative answer:\n')
             if len(split_result) < 2:
                 # No answers provided
@@ -351,7 +351,11 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
                     if (section[:4] == 'name') and (section[7:] not in rdns):
                         #print('Adding {0} to rdns'.format(section[7:]))
                         rdns.append(section[7:])
-            
+
+        except subprocess.TimeoutExpired as e:
+            sys.stdout.write(e+'\n')
+            continue
+
         except subprocess.SubprocessError:
             # Command returned nonzero exit code ---> try next combination
             #print('---------cp-error : nslookup -type=PTR {0}'.format(ipv4))
