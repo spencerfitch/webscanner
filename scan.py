@@ -1,26 +1,46 @@
-# Name: Spencer Fitch
-# netid: slf0232
-#
-# Comp_Sci 340: Intro to Networking
-# Project 4
-#
-# scan.py
+#!/usr/bin/env python
+""" Scan provided IP addresses
 
-# Exit Codes:
-#    0 - exited normally
-#    1 - bad command line input
+This script scans a list of IP addresses for various pieces of information:
+  - IPv4 and IPv6 addresses
+  - RDNS path
+  - Root Certificate Authority
+  - HTTP server architecture
+  - Support for HTTPS
+  - Redirecting to HTTPS
+  - Support for HTTP Strict Transport Security (HSTS)
+  - Supported TLS versions
+  - Server Geolocations
+  - Request Round-Trip-Time
 
+This script was originally written as part of Comp_Sci 340 Introduction to Computer Networking 
+in Fall Quarter 2020, but has since been updated for better readability and flexibility.
 
-import sys
+Comandline Arguments:
+url_file -- line separated list of webiste URLs to scan
+out_file -- output file to save JSON formatted results to
+"""
+
+from sys import argv, exit, stdout, stderr
 from typing import List, Tuple
 
-from shutil import which # Determining if command utility exits
-import time         # for epoch time
-import json         # for packaging result
-import subprocess   # for making cmd scans
-import http.client  # for http connections
-import maxminddb    # for geolocations
+from shutil import which    # Determining if command utility exits
+import time                 # for epoch time
+import json                 # for packaging result
+import subprocess           # for making cmd scans
+import http.client          # for http connections
+import maxminddb            # for geolocations
 
+
+__author__ = 'Spencer Fitch'
+__credits__ = ["Spencer Fitch"]
+
+__version__ = "0.1.0"
+__maintainer__ = "Spencer Fitch"
+__email__ = "spencer@spencerfitch.com"
+__status__ = "development"
+
+LOG_STATUS = "{0} [STATUS] - ".format(argv[0])
 
 dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9', 
                  '64.6.65.6', '185.228.168.168', '91.239.100.100',
@@ -29,15 +49,19 @@ dns_resolvers = ['208.67.222.222', '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9'
 https_failed = False
 
 def get_ip_addresses(website: str, ip_type: str) -> List[str]:
-    ''' 
+    """
     Queries dns_resolvers for all ip addresses of webiste of particular ip_type
 
-    Arguments:
-        website : website to make DNS requests for
-        ip_type : type of IP address to query for ('ipv4' or 'ipv6')
-    Return:
-        ip_addresses : list of all unique IP addresses for particular website
-    '''
+    Args:
+        website (str):
+            website to make DNS requests for
+        ip_type (str):
+            type of IP address to query for ('ipv4' or 'ipv6')
+    Returns:
+        List of all unique IP address strings for particular website.
+        For example:
+            ['104.69.219.34', '184.51.132.77, '23.2.28.215']
+    """
     ip_addresses = []
 
     if (ip_type == 'ipv4'):
@@ -45,7 +69,7 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
     elif (ip_type == 'ipv6'):
         nstype = "-type=AAAA"
     else:
-        sys.stderr.write('Invalid ip_type passed to get_ip_addresses: ' + str(ip_type))
+        stderr.write('Invalid ip_type passed to get_ip_addresses: ' + str(ip_type))
         return None
 
     for dns in dns_resolvers:
@@ -69,19 +93,20 @@ def get_ip_addresses(website: str, ip_type: str) -> List[str]:
 
 
 def parse_url(url: str) -> Tuple[str, str, str]:
-    '''
+    """
     Parse url into components: http(s), host, path
 
-    Arguments:
-        url (str) : full url to parse
+    Args:
+        url (str): 
+            full url to parse
     Returns:
-        http_type (str) : http or https string
-        host (str) : full hostname of website  
-        path (str) : exact redirect path
-    '''
+        Tuple of split URL components of HTTP type, host website, and HTTP path.
+        For example: 
+            ("http", "google.com", "/images")
+    """
     split_url = url.split('/')
 
-    http_type = split_url[0]
+    http_type = split_url[0][:-1]
     host = split_url[2]
     path = '/' + '/'.join(split_url[3:])
 
@@ -89,16 +114,19 @@ def parse_url(url: str) -> Tuple[str, str, str]:
 
 
 def get_https_data(host: str, path: str) -> Tuple[str, bool]:
-    '''
+    """
     Return server info of basic https request
 
-    Arguments:
-        host : hostname of destination server
-        path : path for destination resource
+    Args:
+        host (str):
+            hostname of destination server
+        path (str):
+            path for destination resource
     Returns:
-        server  : server info for HTTPS page
-        hsts    : does HTTPS page support HTTPS Strict Transport Security
-    '''
+        Tuple of server architecutre string and HSTS support flag.
+        For example:
+            ('nginx', False)
+    """
     try:
         # Establish HTTPS connection
         connection = http.client.HTTPSConnection(host, timeout=10)
@@ -114,10 +142,10 @@ def get_https_data(host: str, path: str) -> Tuple[str, bool]:
         return response.getheader('Server'), (response.getheader('Strict-Transport-Security') != None)
 
     except:
-        # HTTPS connection failed?
+        # HTTPS connection failed
         global https_failed
         https_failed = True
-        print('HTTPS connection failed for : ' + host)
+        stdout.write('{0} HTTPS connection failed for {0}'.format(LOG_STATUS, host))
         return None, False
 
 
@@ -126,13 +154,16 @@ def follow_http_redirect(url: str, server: str) -> Tuple[str, bool, bool]:
     '''
     Indicates if HTTP 30X redirects to HTTPS site in <10 redirects
 
-    Arguments:
-        url     : full url to redirect to
-        server  : initial server information
+    Args:
+        url (str):
+            full url to redirect to
+        server (str):
+            initial HTTP server information
     Returns:
-        server          : server info of final redirect
-        redirect_https  : did redirects lead to HTTPS page
-        hsts            : does final page support HTTP Strict Transport Security
+        Tuple of final server information, whether the redirect resulted in
+        an HTTPS server, and whether the HTTPS server supports HSTS.
+        For example:
+            ('nginx', True, False)
     '''
     http_type, host, path = parse_url(url)
 
@@ -188,10 +219,14 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
     ''' 
     Retrieve HTTP request contents
 
-    Arguments:
-        website : host website to make HTTP request for
+    Args:
+        website (str):
+            host website to make HTTP request for
     Returns:
-
+        Tuple of server architecture string and flags for listening 
+        for HTTP (port 80), redirecting to HTTPS, and support for HSTS.
+        For example:
+            ('nginx', True, True, False)
     '''
 
     try:
@@ -221,7 +256,7 @@ def get_http_data(website: str) -> Tuple[str, bool, bool, bool]:
         connection.close()
 
     except Exception as e:
-        sys.stdout.write('HTTP connection failed with error:\n{0}\n'.format(e))
+        stdout.write('{0}HTTP connection failed with error:\n{1}\n'.format(LOG_STATUS, e))
         # HTTP connection failed
         connection.close()
         server = None
@@ -236,11 +271,13 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
     ''' 
     Retrieve TLS versions and root certificate for a given host
 
-    Arguments:
-        host : host URL to query
+    Args:
+        host (str):
+            host URL to query
     Returns:
-        tls_versions : list of supported TLS versions
-        root_ca      : root certificate authority
+        Tuple of list of supported TLS versions and the host's Root
+        Certificate Authority. For example:
+            (['TLSv1.1', 'TLSv1.2'], 'DigiCert Inc')
     '''
     tls_strings = ['SSLv2', 'SSLv3', 'TLSv1.0', 'TLSv1.1', 'TLSv1.2']
 
@@ -264,10 +301,10 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
 
     except subprocess.TimeoutExpired as e:
         # nmap timed out
-        sys.stdout.write('{0}\n'.format(e))
+        stdout.write('{0}nmap request timed out with error:\n{1}\n'.format(LOG_STATUS, e))
     except subprocess.CalledProcessError:
         # nmap returned nonzero exit code
-        sys.stdout.write('nmap on {0} returned non-zero exit code'.format(host))
+        stdout.write('{0}nmap on {1} returned non-zero exit code'.format(LOG_STATUS, host))
 
     # Get TLSv1.3 with openssl
     try:
@@ -313,10 +350,12 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
     '''
     Retrieve dns data for all ipv4 addresses
 
-    Arguments:
-        ipv4_addresses : all ipv4 addresses to query
+    Args:
+        ipv4_addresses (List[str]):
+            all ipv4 addresses to query for DNS data
     Returns:
-        rdns : all rdns data for these ip addresses
+        List of Reverse DNS names found for the IP addresses. For example:
+            ['apple.com', 'icloud.com', 'icloud.com.cn']
     '''
     rdns = []
 
@@ -343,7 +382,7 @@ def get_dns_data(ipv4_addresses: List[str]) -> List[str]:
                         rdns.append(section[7:])
 
         except subprocess.TimeoutExpired as e:
-            sys.stdout.write('{0}\n'.format(e))
+            stdout.write('{0}nslookup timeout expired with error:\n{1}\n'.format(LOG_STATUS, e))
             continue
 
         except subprocess.SubprocessError:
@@ -359,10 +398,11 @@ def parse_time(time_string: str) -> float:
     '''
     Parse time string to time in miliseconds
 
-    Arguments:
-        time_string : string of the form 'XmX.XXXs'
+    Args:
+    time_string (str):
+        time string of the form 'XmX.XXXs'
     Returns:
-        time : equivalent time in milliseconds
+        Equivalent time in milliseconds
     '''
     split_time = time_string[:-1].split('m')
     min_ms = float(split_time[0]) * 60000
@@ -373,12 +413,16 @@ def parse_time(time_string: str) -> float:
 
 def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
     '''
-    Return range of rount trip time for all ipv4 addresses
+    Determine minimum and maximum rount trip time among IP addresses in
+    milliseconds.
 
-    Arguments:
-        ipv4_addresses : all ipv4 addresses to query
+    Args:
+        ipv4_addresses (List[str]):
+            all ipv4 addresses to query
     Returns:
-        rtt_range : [min,max] of rount trip time across all ipv4 addresses
+        Tuple of minimum and maximum round trip time among all IP addresses.
+        For example:
+            (23.0, 30.0)
     '''
     rtt_range = [float('inf'), 0]
 
@@ -395,7 +439,7 @@ def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
 
         except subprocess.SubprocessError:
             # Failed to get rtt -> try next ipv4
-            sys.stdout.write('Failed to connect to {0} to measure RTT\n'.format(ipv4))
+            stdout.write('{0}Failed to connect to {0} to measure RTT\n'.format(LOG_STATUS, ipv4))
             continue
 
         for line in result.split('\n'):
@@ -408,7 +452,7 @@ def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
                 break
     
     if rtt_range == [float('inf'), 0]:
-        sys.stdout.write('Failed to make any connections to measure RTT of IPv4 addresses:\n{0}\n'.format(ipv4_addresses))
+        stdout.write('{0}Failed to make any connections to measure RTT of IPv4 addresses:\n{0}\n'.format(LOG_STATUS, ipv4_addresses))
         rtt_range = [float('inf'), float('inf')]
 
     return rtt_range
@@ -417,12 +461,15 @@ def get_rtt_range(ipv4_addresses: List[str]) -> List[int]:
 
 def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
     '''
-    Retrieve all real-world locations for all of the ipv4 addresses
+    Retrieve all real-world locations for all of the IPv4 addresses using
+    specified GeoLite location information file.
 
-    Arguments:
-        ipv4_addresses : list of ipv4 addresses to search
+    Args:
+        ipv4_addresses (List[str]): 
+            list of ipv4 addresses to search
     Returns:
-        geo_locations : list of real-world locations for the ipv4 addresses
+        List of real-world locations for IPv4 addresses. For example:
+            ['Singapore', 'United Kingdom', 'United States']
     '''
     reader = maxminddb.open_database('GeoLite2-City.mmdb')
 
@@ -445,8 +492,8 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
                 loc_parts.append(cat_data['names']['en'])
             except KeyError:
                 # Data not in database
-                #sys.stdout.write('{0}\t: key error - {1}\n'.format(ipv4, cat))
-                #sys.stdout.write('{0}\t: available keys - {1}\n'.format(ipv4, ', '.join(ip_data.keys())))
+                #stdout.write('{0}\t: key error - {1}\n'.format(ipv4, cat))
+                #stdout.write('{0}\t: available keys - {1}\n'.format(ipv4, ', '.join(ip_data.keys())))
                 continue
 
         # Build loc and add to geo_locations if not already added
@@ -463,68 +510,68 @@ def get_geo_locations(ipv4_addresses: List[str]) -> List[str]:
 
 
 
+if __name__ == '__main__':
+
+    # Check for command line argument
+    if len(argv) != 3:
+        stderr.write("scan.py requires 2 arguments: input_file.txt and output_file.json \n")
+        exit(1)
+
+    # Load in websites from input file
+    websites = []
+    with open(argv[1], "r") as input_file:
+        for line in input_file:
+            websites.append(line.split('\n')[0])
+
+    # Run scans
+    scans = {}
+    for w in websites:
+        https_failed = False
+        stdout.write('{0}Scanning {1}\n'.format(LOG_STATUS, w))
+
+        scans[w] = {"scan_time": time.time()}
+
+        if which('nslookup'):
+            ipv4_addresses = get_ip_addresses(w, 'ipv4')
+            ipv6_addresses = get_ip_addresses(w, 'ipv6')
+            rdns = get_dns_data(ipv4_addresses)
+
+            scans[w]['ipv4_addresses'] = ipv4_addresses
+            scans[w]['ipv6_addresses'] = ipv6_addresses
+            scans[w]['rdns_names'] = rdns
+        else:
+            # Necessary commandline utility available
+            stderr.write('WARNING report.py: nslookup command not detected on machine, so ipv4_addresses, ipv6_addresses, and rdns_names will not be included in {0}\n'.format(argv[2]))
 
 
-# Check for command line argument
-if len(sys.argv) != 3:
-    sys.stderr.write("scan.py requires 2 arguments: input_file.txt and output_file.json \n")
-    sys.exit(1)
+        http_server, listen_http, redirect_https, hsts = get_http_data(w)
 
-# Load in websites from input file
-websites = []
-with open(sys.argv[1], "r") as input_file:
-    for line in input_file:
-        websites.append(line.split('\n')[0])
+        scans[w]['http_server'] = http_server
+        scans[w]['insecure_http'] = listen_http
+        scans[w]['redirect_to_https'] = redirect_https
+        scans[w]['hsts'] = hsts
 
-# Run scans
-scans = {}
-for w in websites:
-    https_failed = False
-    sys.stdout.write('Scanning {0}\n'.format(w))
+        if which('nmap') and which('openssl') and which('echo'):
+            tls_versions, root_ca = get_tls_data(w)
 
-    scans[w] = {"scan_time": time.time()}
+            scans[w]['tls_versions'] = tls_versions
+            scans[w]['root_ca'] = root_ca
+        else:
+            stderr.write('WARNING report.py: nmap, openssl, or echo command not detected on machine, so tls_versions and root_ca will not be included in {0}\n'.format(argv[2]))
 
-    if which('nslookup'):
-        ipv4_addresses = get_ip_addresses(w, 'ipv4')
-        ipv6_addresses = get_ip_addresses(w, 'ipv6')
-        rdns = get_dns_data(ipv4_addresses)
+        if which('sh') and which('echo') and which('time') and which('telnet'):
+            rtt_range = get_rtt_range(ipv4_addresses)
+            scans[w]['rtt_range'] = rtt_range
+        else:
+            stderr.write('WARNING report.py: sh, echo, time, or telnet command not detected on machine, so rtt_range will not be included in {0}\n'.format(argv[2]))
 
-        scans[w]['ipv4_addresses'] = ipv4_addresses
-        scans[w]['ipv6_addresses'] = ipv6_addresses
-        scans[w]['rdns_names'] = rdns
-    else:
-        # Necessary commandline utility available
-        sys.stderr.write('WARNING report.py: nslookup command not detected on machine, so ipv4_addresses, ipv6_addresses, and rdns_names will not be included in {0}\n'.format(sys.argv[2]))
+        geo_locations = get_geo_locations(ipv4_addresses)
+        scans[w]['geo_locations'] = geo_locations
 
 
-    http_server, listen_http, redirect_https, hsts = get_http_data(w)
+    # Write scan output to output file
+    with open(argv[2], "w") as output_file:
+        json.dump(scans, output_file, sort_keys=True, indent=4)
 
-    scans[w]['http_server'] = http_server
-    scans[w]['insecure_http'] = listen_http
-    scans[w]['redirect_to_https'] = redirect_https
-    scans[w]['hsts'] = hsts
-
-    if which('nmap') and which('openssl') and which('echo'):
-        tls_versions, root_ca = get_tls_data(w)
-
-        scans[w]['tls_versions'] = tls_versions
-        scans[w]['root_ca'] = root_ca
-    else:
-        sys.stderr.write('WARNING report.py: nmap, openssl, or echo command not detected on machine, so tls_versions and root_ca will not be included in {0}\n'.format(sys.argv[2]))
-
-    if which('sh') and which('echo') and which('time') and which('telnet'):
-        rtt_range = get_rtt_range(ipv4_addresses)
-        scans[w]['rtt_range'] = rtt_range
-    else:
-        sys.stderr.write('WARNING report.py: sh, echo, time, or telnet command not detected on machine, so rtt_range will not be included in {0}\n'.format(sys.argv[2]))
-
-    geo_locations = get_geo_locations(ipv4_addresses)
-    scans[w]['geo_locations'] = geo_locations
-
-
-# Write scan output to output file
-with open(sys.argv[2], "w") as output_file:
-    json.dump(scans, output_file, sort_keys=True, indent=4)
-
-sys.stdout.write("exited normally\n")
-sys.exit(0)
+    stdout.write("{0}exited normally\n".format(LOG_STATUS))
+    exit(0)
