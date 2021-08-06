@@ -31,7 +31,6 @@ from errno import EACCES, EISDIR
 from http.client import HTTPConnection, HTTPSConnection
 from json import dump
 from maxminddb import open_database
-from scan import get_dns_data, get_https_data, parse_time
 from subprocess import check_output, STDOUT, CalledProcessError, TimeoutExpired, SubprocessError
 from shutil import which
 from sys import argv, stdout, stderr
