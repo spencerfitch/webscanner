@@ -1,0 +1,9 @@
+# Archive files
+*.tar.gz
+*.tgz
+
+# VScode config files
+.vscode
+
+#GeoLite2 files
+*.mmdb
