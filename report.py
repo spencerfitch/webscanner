@@ -1,14 +1,23 @@
-# Name: Spencer Fitch
-# netid: slf0232
-#
-# Comp_Sci 340: Intro to Networking
-# Project 4
-#
-# report.py
+#!/usr/bin/env python
+""" Create a report from scanned host information
 
-# Exit Codes:
-#   0 - exited normally
-#   1 - bad commandline input
+This utility takes in the JSON formatted information from the scan.py
+output and produces a formatted text report document for analysis.
+
+Misc Variables:
+
+    __author__
+    __credits__
+    __version__
+    __email__
+    __status__
+
+Commandline Arguments:
+
+    scan_file -- JSON formatted scan results file
+    out_file -- ouput file to save text report to
+
+"""
 
 import sys
 
@@ -16,6 +25,13 @@ import json                         # parsing input_file.json
 from texttable import Texttable     # formatting output_file.txt
 import heapq                        # priorty queue for RTT table
 import operator
+
+__author__ = 'Spencer Fitch'
+__credits__ = ['Spencer Fitch']
+__version__ = '0.1.0'
+__email__ = 'spencer@spencerfitch.com'
+__status__ = 'development'
+
 
 if len(sys.argv) != 3:
     sys.stderr.write('report.py requires 2 arguments: input_file.json and output_file.txt')
