@@ -11,3 +11,6 @@
 # Local folders
 out
 submission
+
+# Python cache
+__pycache__
