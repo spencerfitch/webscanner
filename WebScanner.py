@@ -4,6 +4,18 @@
 This module can obtain a variety of information about a given host website 
 including IP addresses, reverse DNS results, TLS support, and more. 
 
+Functions:
+
+    full_scan(str, List[str], str) -> dict
+    get_ipv4(str, List[str]) -> List[str]
+    get_ipv6(str, List[str]) -> List[str]
+    get_rdns(List[str]) -> List[str]
+    get_http_data(str) -> Tuple[str, bool, bool]
+    get_https_data(str) -> Tuple[bool, bool]
+    get_tls_data(str) -> Tuple[List[str], str]
+    get_rtt_range(List[str], bool) -> Tuple[int, int]
+    get_geo_locations(List[str], str) -> List[str]
+
 Misc Variables:
 
     __name__
@@ -28,7 +40,7 @@ from maxminddb import open_database
 __name__ = 'webscanner'
 __author__ = 'Spencer Fitch'
 __credits__ = ['Spencer Fitch']
-__version__ = '0.4.0'
+__version__ = '0.5.1'
 __email__ = 'spencer@spencerfitch.com'
 __status__ = 'development'
 
@@ -340,7 +352,7 @@ def get_tls_data(host: str) -> Tuple[List[str], str]:
 
     return tls_supported, root_ca
 
-def get_rtt_range(ipv4_addresses: List[str], https: bool = False) -> Tuple[int]:
+def get_rtt_range(ipv4_addresses: List[str], https: bool = False) -> Tuple[int, int]:
     """
     Determine minimum and maximum round trip time among all IP addresses 
     in milliseconds.
