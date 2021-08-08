@@ -98,11 +98,11 @@ class WebScanner:
             scan_results['rdns_names'] = self.get_rdns(scan_results['ipv4_addresses'])
         
 
-        http_server, listen_http, redirect_https = self.get_http_data(host)
+        http_server, listen_http, redirect_to_https = self.get_http_data(host)
 
         scan_results['http_server'] = http_server
         scan_results['listen_http'] = listen_http
-        scan_results['redirect_https'] = redirect_https
+        scan_results['redirect_to_https'] = redirect_to_https
 
         listen_https, hsts = self.get_https_data(host)
 
@@ -231,12 +231,12 @@ class WebScanner:
 
         if 300 <= http_response.code <= 310:
             # Follow redirect for possible HTTPS
-            redirect_https = self.__does_redirect_HTTPS(http_response.getheader('Location'))
-            return server, listen_http, redirect_https
+            redirect_to_https = self.__does_redirect_to_https(http_response.getheader('Location'))
+            return server, listen_http, redirect_to_https
         
-        redirect_https = False
+        redirect_to_https = False
             
-        return server, listen_http, redirect_https
+        return server, listen_http, redirect_to_https
 
     def get_https_data(self, host: str) -> Tuple[bool, bool]:
         """
@@ -443,7 +443,7 @@ class WebScanner:
             message (str):
                 formatted body of message to write
         """
-        stderr.write('{0} [WARNING] - {1}'.format(__class__.__name__, message))
+        stderr.write('{0} [WARNING] - {1}\n'.format(__class__.__name__, message))
 
     def __write_error(self, message: str) -> None:
         """
@@ -547,7 +547,7 @@ class WebScanner:
             self.__write_status('{0} connection to {1} failed with error:\n{2}'.format(http_string, host+path, e))
             return None
 
-    def __does_redirect_HTTPS(self, url: str, attempts_remain: int = 10) -> bool:
+    def __does_redirect_to_https(self, url: str, attempts_remain: int = 10) -> bool:
         """
         Follow up to HTTP 30X redirects until HTTPS found or out of remaining attempts
 
