@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """ Create a report from scanned website information
 
-This script transcribes the JSON formatted results form the WebScanner class
+This script transcribes the JSON formatted results form the webscanner module
 and produces a formatted text report document for analysis.
 
 Misc Variables:
@@ -14,7 +14,7 @@ Misc Variables:
 
 Commandline Arguments:
 
-    scan_file -- file of JSON formatted results from WebScanner class
+    scan_file -- file of JSON formatted results from webscanner module
     out_file -- output file to save text report to
 
 """
@@ -32,7 +32,7 @@ from texttable import Texttable
 
 __author__ = 'Spencer Fitch'
 __credits__ = ['Spencer Fitch']
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 __email__ = 'spencer@spencerfitch.com'
 __status__ = 'development'
 

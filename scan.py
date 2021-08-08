@@ -1,7 +1,7 @@
 #!usr/bin/env python
-""" Use WebScanner class to scan list of websites
+""" Use webscanner module to scan list of websites
 
-This script utilizes the WebScanner class to scan a list of websites using provided
+This script utilizes the webscanner module to scan a list of websites using provided
 DNS resolvers and GeoLite2 file and save the results to a JSON output file. 
 
 Misc Variables:
@@ -18,7 +18,7 @@ Comandline Arguments:
     dns_file -- line separated list of DNS resolver IP addresses
     geo_file -- GeoLite2 location data file
     out_file -- output file to save JSON formatted results to
-    
+
 """
 
 
@@ -26,12 +26,12 @@ from errno import EACCES, EISDIR
 from sys import argv, stdout, stderr
 from json import dump
 
-from WebScanner import WebScanner
+import webscanner
 
 
 __author__ = 'Spencer Fitch'
 __credits__ = ['Spencer Fitch']
-__version__ = '0.3.0'
+__version__ = '0.4.0'
 __email__ = 'spencer@spencerfitch.com'
 __status__ = 'development'
 
@@ -39,7 +39,11 @@ __status__ = 'development'
 if __name__ == '__main__':
     
     # Check for command line arguments
-    CMD_ARGS = ['url_file', 'dns_file', 'geo_file', 'out_file']
+    CMD_ARGS = [
+        'url_file -- line separated list of webiste URLs to scan', 
+        'dns_file -- line separated list of DNS resolver IP addresses',
+        'geo_file -- GeoLite2 location data file', 
+        'out_file -- output file to save JSON formatted results to']
     ERROR_ARG = '{0} [Argument Error] - '.format(argv[0])
     if len(argv) != len(CMD_ARGS) + 1:
         exit('{0}{1} arguments required to run this file:\n\t{2}'.format(ERROR_ARG, len(CMD_ARGS), '\n\t'.join(CMD_ARGS)))
@@ -65,14 +69,12 @@ if __name__ == '__main__':
             stderr.write(e)
             exit("{0}unexpected error encountered when writing output to '{1}'".format(ERROR_ARG, out_file))
 
-    scanner = WebScanner()
-
     # Run scans
     scans = {}
     for h in hosts:
         stdout.write('{0} [STATUS] - Scanning {1}'.format(argv[0], h))
 
-        scans[h] = scanner.full_scan(h, dns_resolvers, argv[3])
+        scans[h] = webscanner.full_scan(h, dns_resolvers, argv[3])
 
     # Write scan results to output file
     with open(out_file, 'w') as f:
