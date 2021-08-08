@@ -16,6 +16,8 @@ Misc Variables:
     __email__
     __status__
 
+    __dns_default__
+
 """
 
 from http.client import HTTPConnection, HTTPSConnection
@@ -29,13 +31,16 @@ from maxminddb import open_database
 
 __author__ = 'Spencer Fitch'
 __credits__ = ['Spencer Fitch']
-__version__ = '0.3.0'
+__version__ = '0.4.0'
 __email__ = 'spencer@spencerfitch.com'
 __status__ = 'development'
 
+__dns_default__ = [
+    '1.1.1.1', '8.8.8.8', '8.26.56.26', '9.9.9.9', '64.6.65.6',
+    '91.239.100.100', '185.228.168.168', '77.88.8.7', '156.154.70.1']
 
 class WebScanner:
-    def full_scan(self, host: str, dns_resolvers: List[str] = None, geo_file: str = None) -> List[str]:
+    def full_scan(self, host: str, dns_resolvers: List[str] = __dns_default__, geo_file: str = None) -> dict:
         """
         Run a complete scan of a given website using all available functions.
 
@@ -44,8 +49,8 @@ class WebScanner:
                 host to conduct a full web scan of
             dns_resolvers (List[str]):
                 List of DNS resolvers to use in finding IPv4 and IPv6 addresses.
-                If excluded the IPv4 and IPv6 information will not be included
-                in results.
+                If excluded a default list of DNS resolvers will be used.
+                If passed as None, IPv4 and IPv6 information will be excluded from the results
             geo_file (List[str]):
                 Path to GeoLite2 database file. If excluded the geo_locations
                 field will not be included in results.
@@ -133,7 +138,7 @@ class WebScanner:
 
         return scan_results
 
-    def get_ipv4(self, host: str, dns_resolvers: List[str]) -> List[str]:
+    def get_ipv4(self, host: str, dns_resolvers: List[str] = __dns_default__) -> List[str]:
         """
         Query DNS resolvers for all IPv4 addresses of specified host
 
@@ -148,7 +153,7 @@ class WebScanner:
         """
         return self.__get_ip_addresses(host, dns_resolvers, False)
 
-    def get_ipv6(self, host: str, dns_resolvers: List[str]) -> List[str]:
+    def get_ipv6(self, host: str, dns_resolvers: List[str] = __dns_default__) -> List[str]:
         """
         Query DNS resolvers for all IPv6 addresses of specified host
 
